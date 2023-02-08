@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pak_programmer/constant/constant_button.dart';
+import 'package:pak_programmer/module/coures_outline/controller/courses_controller.dart';
 import 'package:pak_programmer/module/fyp/controller/controller.dart';
 import 'package:pak_programmer/module/fyp/model/model.dart';
 import 'package:pak_programmer/module/enroll_form/view/enroll_now_form.dart';
 import 'package:pak_programmer/util/color.dart';
 import 'package:sizer/sizer.dart';
 
-class FypScreen extends StatelessWidget {
-  final controller = Get.put(TeacherFindTutorsController());
+class CourseOutline extends StatelessWidget {
+  final controller = Get.put(CouresController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +46,7 @@ class FypScreen extends StatelessWidget {
                         collapsedTextColor: Colors.black,
                         textColor: Colors.black,
                         title: Text(
-                          controller.productlist[index].name,
+                          controller.productlist[index].title,
                           style: TextStyle(
                             fontWeight: FontWeight.normal,
                             color: Colors.black,
@@ -54,7 +55,8 @@ class FypScreen extends StatelessWidget {
                         ),
                         children: [
                           Container(
-                            height: 29.h,
+                           
+                            height: 22.h,
                             child: Obx(() => ListView.builder(
                                   physics: NeverScrollableScrollPhysics(),
                                   itemCount: controller.productlist.length,
@@ -79,7 +81,7 @@ class FypScreen extends StatelessWidget {
                                             padding:
                                                 EdgeInsets.only(top: 0.5.h),
                                             child: Text(controller
-                                                .productlist[pos].category),
+                                                .productlist[pos].outline[index].outlineTitle),
                                           ),
                                         ],
                                       ),
@@ -88,6 +90,7 @@ class FypScreen extends StatelessWidget {
                                 )),
                           ),
                         ]);
+              
                   },
                 );
                
@@ -95,16 +98,7 @@ class FypScreen extends StatelessWidget {
                    },
               ),
             ),
-            // MaterialButton(
-            //   onPressed: () {
-            //     Get.to(SubscriptionForm(),transition: Transition.fadeIn);
-            //   },
-            //   child: Text('Continouse',style: TextStyle(color: Colors.white),),
-            //   minWidth: Get.size.width - 20.w,
-            //   color: PColor.appColor,
-            //   height: 6.h,
-            //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            // )
+         
             SizedBox(height: 7.6.h,),
            ConstantButton(name: "Enroll Now", onpress: (){
             Get.to(SubscriptionForm(),transition: Transition.fadeIn);

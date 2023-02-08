@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pak_programmer/UI/auth/logo/login_controller.dart';
+import 'package:pak_programmer/module/auth/logo/login_controller.dart';
 import 'package:pak_programmer/Widgets/reuseable_button.dart';
 import 'package:pak_programmer/images_class/images_class.dart';
 import 'package:pak_programmer/util/app_style.dart';

@@ -11,7 +11,7 @@ import 'package:pak_programmer/module/project/serviece/service.dart';
 
 
 class ProjectListController extends GetxController{
-var isLoading=false.obs;
+var isLoading=true.obs;
   // var productlist=<StudentFindTutorsModelClass>[].obs;
   var productlist=List<ProjectListModelClass>.empty().obs;
   var connectionStatus=0.obs;
@@ -43,6 +43,7 @@ var isLoading=false.obs;
   void fetchProduct() async{
     try {
       isLoading(true);
+      // isLoading.value=true;
       var products=await StudentFindTutorsServies.getFindtutors();
       if(products!=null){
         productlist.assignAll(products);

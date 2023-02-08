@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pak_programmer/UI/auth/logo/logo_screen.dart';
-import 'package:pak_programmer/UI/auth/signUp_screen/signup_screen_controller.dart';
+import 'package:pak_programmer/module/auth/logo/logo_screen.dart';
+import 'package:pak_programmer/module/auth/signUp_screen/signup_screen_controller.dart';
 import 'package:pak_programmer/Widgets/reuseable_button.dart';
 import 'package:pak_programmer/images_class/images_class.dart';
 import 'package:pak_programmer/module/bottom_nav/bottom_nav.dart';
@@ -205,7 +205,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                       onPressed: () {
-                        Get.to(GenralBottomNavigationBarPage());
+                        Get.to(PakProgrammerBottomNav());
                         // controllerforallsignup.FormValidation();
                       },
                       color: PColor.secondryColor,

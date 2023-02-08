@@ -8,9 +8,10 @@ class AppConstants {
   static const String find_tutors = '?results=10';
   static const String tutor_profile = '?results=10';
   static const String message = '?results=10';
-  static const String base_url = 'http://192.168.10.8:80/api/';
+  static const String base_url = 'http://192.168.10.8:8000/api/';
   static const String get_course = 'get_courses';
   static const String get_language = 'get_languages';
   static const String get_banner = 'get_banners';
-  static const String image_base_url = 'http://192.168.10.8/images/';
+  static const String course_outline = 'get_course_outline/1';
+  static const String image_base_url = 'http://192.168.10.8:8000/images/';
 }

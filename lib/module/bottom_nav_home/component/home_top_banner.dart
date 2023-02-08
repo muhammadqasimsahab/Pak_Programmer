@@ -19,7 +19,13 @@ class HomeTopBanner extends StatelessWidget {
       margin: EdgeInsets.only(left: 1.w,top: 1.h,right: 1.w),
       height: 15.h,
       child: Obx(() {
-        return ListView.builder(
+        if(getbannerController.isLoading.value){
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+
+        }else{
+           return ListView.builder(
           // scrollDirection: Axis.horizontal,
           physics: NeverScrollableScrollPhysics(),
           itemCount: getbannerController.get_top_bannerList.length,
@@ -61,7 +67,9 @@ class HomeTopBanner extends StatelessWidget {
     );
           },
         );
-      }),
+     
+        }
+        }),
     );
   }
 }

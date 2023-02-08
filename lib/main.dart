@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pak_programmer/UI/splash%20screen/splash_screen.dart';
+import 'package:pak_programmer/module/enroll_form/view/enroll_now_form.dart';
+import 'package:pak_programmer/module/splash%20screen/splash_screen.dart';
 import 'package:pak_programmer/module/bottom_nav/bottom_nav.dart';
 import 'package:pak_programmer/tester/tester_page.dart';
 import 'package:sizer/sizer.dart';
@@ -26,8 +27,12 @@ class MyApp extends StatelessWidget {
       // initialRoute: AppPages.INITIAL,
       // getPages: AppPages.routes,
       home: const SplashScreen(),
-      // home: TesterPage(),
+      // home: SubscriptionForm(),
       // home: GenralBottomNavigationBarPage(),
+
+
+     
+      
 
     );
 

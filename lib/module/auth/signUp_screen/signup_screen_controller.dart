@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../Homepage.dart';
+import 'package:pak_programmer/module/bottom_nav/bottom_nav.dart';
 
 class SignUpScreenController extends GetxController {
   TextEditingController usernamecontroller = TextEditingController();
@@ -14,7 +13,7 @@ class SignUpScreenController extends GetxController {
       print('Form is Not valid');
     } else {
       print("form are valid");
-      Get.to(() => HomeScreen());
+      Get.to(() => PakProgrammerBottomNav());
     }
   }
 

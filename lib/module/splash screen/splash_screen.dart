@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pak_programmer/UI/welcome_page.dart';
+import 'package:pak_programmer/module/welcome/welcome_page.dart';
 import 'package:pak_programmer/images_class/images_class.dart';
 import 'package:pak_programmer/routes/pgaes.dart';
 import 'package:pak_programmer/util/color.dart';

@@ -7,6 +7,7 @@ class ReusableTextFiled extends StatelessWidget {
       {super.key,
       required this.hintText,
       this.suffixicon,
+      this.autovalidate,
       this.validate,
       this.controller,
       this.visiable});
@@ -14,6 +15,7 @@ class ReusableTextFiled extends StatelessWidget {
   Widget? suffixicon;
   final validate;
   final controller;
+  AutovalidateMode? autovalidate;
   bool? visiable;
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class ReusableTextFiled extends StatelessWidget {
       obscureText: visiable!,
       validator: validate,
       controller: controller,
+      autovalidateMode: autovalidate,
       decoration: InputDecoration(
          enabledBorder: UnderlineInputBorder(      
                       borderSide: BorderSide(color: PColor.secondryColor),   

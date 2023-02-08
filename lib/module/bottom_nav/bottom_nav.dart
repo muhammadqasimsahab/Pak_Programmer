@@ -21,15 +21,15 @@ import 'package:pak_programmer/util/common_Text.dart';
 // import 'package:share_plus/share_plus.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
-class GenralBottomNavigationBarPage extends StatefulWidget {
+class PakProgrammerBottomNav extends StatefulWidget {
   int? uid;
 
-  GenralBottomNavigationBarPage({this.uid});
+  PakProgrammerBottomNav({this.uid});
   @override
-  State<GenralBottomNavigationBarPage> createState() =>
-      _GenralBottomNavigationBarPageState();
+  State<PakProgrammerBottomNav> createState() =>
+      _PakProgrammerBottomNavState();
 }
-class _GenralBottomNavigationBarPageState extends State<GenralBottomNavigationBarPage> {
+class _PakProgrammerBottomNavState extends State<PakProgrammerBottomNav> {
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   int currentIndex = 2;
   String text = '0';
@@ -44,8 +44,8 @@ class _GenralBottomNavigationBarPageState extends State<GenralBottomNavigationBa
     //  GenralBottomMessageView(),
     // Text('Project'),
     BottomNavProjectPage(),
-    // Text('Fyp'),
-    FypScreen()
+    Text('Fyp'),
+    // FypScreen()
   ];
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currenScreen = PakProgrammerHome();

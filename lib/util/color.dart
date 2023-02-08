@@ -8,4 +8,6 @@ class PColor{
   static const Color appColor=Color(0xff2889EB);
   static const Color secondryColor=Color(0xff238B84);
   static const Color color_white=Colors.white;
+  static const Color color_black=Colors.black;
+  static const Color color_grey=Colors.grey;
 }

@@ -31,9 +31,12 @@ class LanguageContainer extends StatelessWidget {
           ),
         ],
       ),
-      height: 21.h,
+      height: 19.h,
       child: Obx(() {
-        return GridView.builder(
+       if(getLanguageController.isLoading.value){
+        return Center(child: CircularProgressIndicator(),);
+       }else{
+         return GridView.builder(
           physics: NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 5,
@@ -44,32 +47,45 @@ class LanguageContainer extends StatelessWidget {
               getLanguageController.get_course_ProductList.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: EdgeInsets.only(left: 2.w),
-              child: Container(
-              
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      height: 2.h,
-                    ),
-                    Image.network(
-                      AppConstants.image_base_url +
-                          getLanguageController
-                              .get_course_ProductList[index]
-                              .languageImage,
-                      width: 17.w,
-                      height: 3.4.h,
-                    ),
-                     
-                    commonText(title: getLanguageController
-                        .get_course_ProductList[index].languageTitle,textSize: 10.sp,textOverflow: TextOverflow.ellipsis,)
-                  ],
+              padding: EdgeInsets.only(left: 2.w,top: 1.2.h),
+              child: Center(
+                child: Container(
+                  
+             height: 30.h,
+                      width: 30.w,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          border:
+                          Border.all(color: Colors.white, width: 0.5)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        height: 0.6.h,
+                      ),
+                      Image.network(
+                        AppConstants.image_base_url +
+                            getLanguageController
+                                .get_course_ProductList[index]
+                                .languageImage,
+                        width: 17.w,
+                        height: 3.h,
+                      ),
+                       
+                      commonText(title: getLanguageController
+                          .get_course_ProductList[index].languageTitle,textSize: 9.sp,textOverflow: TextOverflow.ellipsis,)
+                   ,SizedBox(height: 1.2.h,),
+                    ],
+                  ),
                 ),
               ),
             );
           },
         );
+     
+       }
       }),
     );
   }
