@@ -7,7 +7,7 @@ import 'package:pak_programmer/module/bottom_nav_home/servies/home_top_banner.da
 class HomeTopBannerController extends GetxController{
 
 
-  RxBool isLoading=false.obs;
+var isLoading=true.obs;
   final get_top_bannerList=List<HomeTopBannerModeClass>.empty().obs;
 
 @override

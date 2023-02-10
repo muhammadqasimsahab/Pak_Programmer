@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:pak_programmer/images_class/images_class.dart';
 import 'package:pak_programmer/module/bottom_nav_home/component/find_your_career.dart';
 import 'package:pak_programmer/module/bottom_nav_home/component/home_courses_container.dart';
@@ -10,6 +11,7 @@ import 'package:pak_programmer/module/bottom_nav_home/controller/home_getLanguag
 import 'package:pak_programmer/module/bottom_nav_home/controller/home_get_courseController.dart';
 import 'package:pak_programmer/module/bottom_nav_home/controller/home_top_banner_controller.dart';
 import 'package:pak_programmer/module/bottom_nav_home/servies/home_servies.dart';
+import 'package:pak_programmer/module/bottom_nav_home/shimmer/course_shimmer.dart';
 import 'package:pak_programmer/util/api.dart';
 // import 'package:pak_programmer/pages/home_page/component/find_your_career.dart';
 import 'package:pak_programmer/util/color.dart';
@@ -27,32 +29,27 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
   final getCoursesController = Get.put(HomeGetCoursesController());
   final getLanguageController = Get.put(HomeGetLanguageController());
   final getbannerController = Get.put(HomeTopBannerController());
+
+  BannerAd? bannerAd;
+  bool isLoaded = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF8F5FE),
+
+      backgroundColor: PColor.backgroundColor,
+      
       appBar: AppBar(
-        centerTitle: true,
-        elevation: 0.3,
-        leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.black,
-            )),
+        automaticallyImplyLeading: false,
+        elevation: 0.7,
         backgroundColor: PColor.backgroundColor,
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               "Pak",
               style: TextStyle(
                   color: PColor.secondryColor,
                   fontWeight: FontWeight.w800,
-                  fontSize: 22),
+                  fontSize: 13.sp),
             ),
             SizedBox(
               width: 1.w,
@@ -60,18 +57,22 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
             Text(
               "Programmers",
               style: TextStyle(
+                  // fontFamily: "",
                   color: PColor.appColor,
                   fontWeight: FontWeight.w800,
-                  fontSize: 22),
+                  fontSize: 13.sp),
             )
           ],
         ),
       ),
       body: SingleChildScrollView(
+        
         child: Column(
           children: [
-            HomeTopBanner(getbannerController: getbannerController),
-         
+            Container(
+                // height: 15.h,
+                width: Get.size.width,
+                child: HomeTopBanner(getbannerController: getbannerController)),
             search_box(context),
             SizedBox(
               height: 1.h,
@@ -91,18 +92,29 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
             SizedBox(
               height: 0.5.h,
             ),
-          
-            LanguageContainer(getLanguageController: getLanguageController),
+            Container(
+                //  height: 24.h,
+                width: Get.size.width,
+                child: LanguageContainer(
+                    getLanguageController: getLanguageController)),
             SizedBox(
               height: 2.h,
             ),
+            isLoaded
+                ? Container(
+                    height: 6.h,
+                    child: AdWidget(
+                      ad: bannerAd!,
+                    ),
+                  )
+                : SizedBox(),
             Row(
               children: [
                 SizedBox(
                   width: 4.w,
                 ),
                 Text(
-                  'Come Fullstack Developer',
+                  'Become Fullstack Developer',
                   style:
                       TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
                 ),
@@ -111,9 +123,11 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
             SizedBox(
               height: 0.5.h,
             ),
-
-            HomeCoursesContainer(getCoursesController: getCoursesController),
-
+            Container(
+                //  height: 25.h,
+                // child:CourseShimmer()),
+                child: HomeCoursesContainer(
+                    getCoursesController: getCoursesController)),
             SizedBox(
               height: 2.h,
             ),
@@ -185,8 +199,11 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
           ],
         ),
       ),
+      
     );
+    
   }
+
 
   Container fullstackDeveloper_conteiner(
       String title, String seconTitle, String imag, String disIage) {
@@ -381,5 +398,26 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
             ),
       ),
     );
+  }
+
+  // ads unit
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    bannerAd = BannerAd(
+        size: AdSize.banner,
+        adUnitId: "ca-app-pub-3940256099942544/6300978111",
+        listener: BannerAdListener(onAdLoaded: (ad) {
+          setState(() {
+            isLoaded = true;
+          });
+          print("Banner Ad Loaded");
+        }, onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+        }),
+        request: AdRequest());
+
+    bannerAd!.load();
   }
 }

@@ -6,15 +6,21 @@ import 'package:pak_programmer/module/bottom_nav/bottom_nav.dart';
 import 'package:pak_programmer/tester/tester_page.dart';
 import 'package:sizer/sizer.dart';
 
+import 'module/bottom_nav_home/controller/home_getLanguage_controller.dart';
+import 'module/bottom_nav_home/controller/home_get_courseController.dart';
+import 'module/bottom_nav_home/controller/home_top_banner_controller.dart';
 import 'routes/routPage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
 
+ final getCoursesController = Get.put(HomeGetCoursesController());
+  final getLanguageController = Get.put(HomeGetLanguageController());
+  final getbannerController = Get.put(HomeTopBannerController());
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

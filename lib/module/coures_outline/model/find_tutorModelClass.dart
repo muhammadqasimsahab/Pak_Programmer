@@ -1,16 +1,16 @@
 // To parse this JSON data, do
 //
-//     final expansionListTileModel = expansionListTileModelFromJson(jsonString);
+//     final projectListModelClass = projectListModelClassFromJson(jsonString);
 
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-List<ExpansionListTileModel> expansionListTileModelFromJson(String str) => List<ExpansionListTileModel>.from(json.decode(str).map((x) => ExpansionListTileModel.fromJson(x)));
+List<ProjectListModelClass> projectListModelClassFromJson(String str) => List<ProjectListModelClass>.from(json.decode(str).map((x) => ProjectListModelClass.fromJson(x)));
 
-String expansionListTileModelToJson(List<ExpansionListTileModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String projectListModelClassToJson(List<ProjectListModelClass> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class ExpansionListTileModel {
-    ExpansionListTileModel({
+class ProjectListModelClass {
+    ProjectListModelClass({
         required this.id,
         required this.brand,
         required this.name,
@@ -52,7 +52,7 @@ class ExpansionListTileModel {
     String apiFeaturedImage;
     List<ProductColor> productColors;
 
-    factory ExpansionListTileModel.fromJson(Map<String, dynamic> json) => ExpansionListTileModel(
+    factory ProjectListModelClass.fromJson(Map<String, dynamic> json) => ProjectListModelClass(
         id: json["id"],
         brand: json["brand"],
         name: json["name"],

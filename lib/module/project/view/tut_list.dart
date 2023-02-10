@@ -24,14 +24,16 @@ class _BottomNavProjectPageState extends State<BottomNavProjectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xffF8F5FE),
+       backgroundColor: PColor.backgroundColor,
         appBar: AppBar(
-          centerTitle: true,
+          // centerTitle: true,
           elevation: 0.2,
-          backgroundColor: Color(0xffF8F5FE),
+          automaticallyImplyLeading: false,
+          // leading: IconButton(onPressed: (){Get.back();}, icon: Icon(Icons.arrow_back_ios)),
+          backgroundColor:PColor.secondryColor,
           title: Text(
             'Flutter Free Or Paid Project',
-            style: TextStyle(color: Colors.black, fontSize: 11.sp),
+            style: TextStyle(color: Colors.white, fontSize: 13.sp),
           ),
         ),
         body: Obx(() {

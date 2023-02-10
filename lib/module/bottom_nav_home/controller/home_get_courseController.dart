@@ -1,5 +1,5 @@
 import 'package:get/state_manager.dart';
-import 'package:pak_programmer/module/bottom_nav_home/model/home_model.dart';
+import 'package:pak_programmer/module/bottom_nav_home/model/course_model.dart';
 import 'package:pak_programmer/module/bottom_nav_home/servies/home_servies.dart';
 
 class HomeGetCoursesController extends GetxController{
@@ -23,9 +23,11 @@ class HomeGetCoursesController extends GetxController{
    try {
       isLoading(true);
     var data= await HomeServiesClass().fetchHomeCoursesData();
+
     if(data!=null){
       get_course_ProductList.assignAll(data);
-      print(get_course_ProductList);
+    
+
      
     }
    } finally {

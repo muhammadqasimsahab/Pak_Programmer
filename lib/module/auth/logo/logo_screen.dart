@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pak_programmer/module/auth/logo/login_controller.dart';
 import 'package:pak_programmer/Widgets/reuseable_button.dart';
 import 'package:pak_programmer/images_class/images_class.dart';
+import 'package:pak_programmer/module/forget_password/forget_password.dart';
 import 'package:pak_programmer/util/app_style.dart';
 import 'package:pak_programmer/util/color.dart';
 import 'package:pak_programmer/util/common_Text.dart';
@@ -25,6 +26,13 @@ class _LogInScreenState extends State<LogInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(),
+         appBar: AppBar(
+        leading: IconButton(onPressed: (){
+          Get.back();
+        }, icon: Icon(Icons.arrow_back_ios)),
+        backgroundColor: PColor.secondryColor,
+        title: commonText(title: "Login",color: PColor.color_white,textSize: 14.sp,),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Form(
@@ -33,7 +41,7 @@ class _LogInScreenState extends State<LogInScreen> {
             child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 8.h,),
+                    SizedBox(height: 2.h,),
                     Image.asset(
                       PImages.logo,
                       height: 20.h,
@@ -64,7 +72,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ],
                     ),
                  
-                    SizedBox(height: 12.h,),
+                    SizedBox(height: 6.h,),
                      Padding(
                        padding:  EdgeInsets.only(left: 3.w),
                        child: Row(
@@ -123,8 +131,13 @@ class _LogInScreenState extends State<LogInScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text('Forgot Password?',
-                              style: TextStyle(fontSize: 10.sp,color: PColor.appColor)),
+                          InkWell(
+                            onTap: (){
+                              Get.to(ForgetPassword(),transition: Transition.fadeIn);
+                            },
+                            child: Text('Forgot Password?',
+                                style: TextStyle(fontSize: 10.sp,color: PColor.appColor)),
+                          ),
                         ],
                       ),
                     ),

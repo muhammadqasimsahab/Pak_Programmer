@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:pak_programmer/module/bottom_nav/widgets/bottom_nav_layout.dart';
 import 'package:pak_programmer/module/bottom_nav_home/pak_programmer_home.dart';
 import 'package:pak_programmer/module/full_stack/full_stack.dart';
-import 'package:pak_programmer/module/fyp/view/fyp.dart';
+// import 'package:pak_programmer/module/fyp/view/fyp.dart';
 import 'package:pak_programmer/module/languages/lanuage.dart';
 import 'package:pak_programmer/module/project/view/tut_list.dart';
 import 'package:pak_programmer/util/color.dart';

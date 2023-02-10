@@ -31,6 +31,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: (){
+          Get.back();
+        }, icon: Icon(Icons.arrow_back_ios)),
+        backgroundColor: PColor.secondryColor,
+        title: commonText(title: "SignUp",color: PColor.color_white,textSize: 14.sp,),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child:Form(
@@ -210,7 +217,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       },
                       color: PColor.secondryColor,
                     ),
-                    SizedBox(height: 25),
+                    SizedBox(height: 25.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

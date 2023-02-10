@@ -30,11 +30,11 @@ class _GenralTabBarMaterialWidgetsState extends State<GenralTabBarMaterialWidget
         child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-          buildTabItem(index: 0, icon:PImages.language,title: "LANGUAGES"),
+          buildTabItem(index: 4, icon:PImages.fyp,title: "FYP"),
           buildTabItem(index: 1, icon:PImages.fullstack,title: 'FULL STACK'),
           buildTabItem(index: 2, icon:PImages.home,title: 'HOME'),
           buildTabItem(index: 3, icon:PImages.project,title: "PROJECT"),
-          buildTabItem(index: 4, icon:PImages.fyp,title: "FYP"),
+          buildTabItem(index: 0, icon:PImages.language,title: "LANGUAGES"),
 
       ],
     ));
@@ -49,7 +49,7 @@ class _GenralTabBarMaterialWidgetsState extends State<GenralTabBarMaterialWidget
   }) {
     final isSelect = index == widget.index;
     return IconTheme(
-      data: IconThemeData(color: isSelect ? Colors.red : Colors.black),
+      data: IconThemeData(color: isSelect ? PColor.appColor : Colors.black),
       child: Padding(
         padding:  EdgeInsets.only(bottom: 8),
         child: GestureDetector(
@@ -60,13 +60,13 @@ class _GenralTabBarMaterialWidgetsState extends State<GenralTabBarMaterialWidget
              IconButton(
                icon: Image.asset(
                  icon,
-                 color: isSelect ? PColor.btnColor : Colors.grey,
+                 color: isSelect ? PColor.secondryColor : Colors.grey,
                  width: 6.w,
                  height: 6.h,
                ),
                onPressed:null ,
              ),
-             Text(title,style: TextStyle(color: isSelect ? PColor.btnColor :Colors.grey,fontSize: 10),)
+             Text(title,style: TextStyle(color: isSelect ? PColor.secondryColor :Colors.grey,fontSize: 10),)
             ],
           ),
         ),

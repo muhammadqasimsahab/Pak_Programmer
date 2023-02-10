@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pak_programmer/images_class/images_class.dart';
 import 'package:pak_programmer/module/bottom_nav_home/controller/home_get_courseController.dart';
+// import 'package:pak_programmer/module/coures_outline/view/tut_list.dart';
 import 'package:pak_programmer/module/coures_outline/view/view.dart';
-import 'package:pak_programmer/module/fyp/view/fyp.dart';
+// import 'package:pak_programmer/module/coures_outline/view/view.dart';
+// import 'package:pak_programmer/module/fyp/view/fyp.dart';
 import 'package:pak_programmer/util/api.dart';
 import 'package:sizer/sizer.dart';
 
@@ -21,7 +23,8 @@ class HomeCoursesContainer extends StatelessWidget {
     return Container(
       // margin: EdgeInsets.only(left: 1.5.w),
        margin: EdgeInsets.only(left: 1.w,top: 1.h,right: 1.w),
-      height: 25.h,
+      // height: 25.h,
+      height: Get.size.height*0.25,
       child: Obx(() {
         if(getCoursesController.isLoading.value){
           return Center(

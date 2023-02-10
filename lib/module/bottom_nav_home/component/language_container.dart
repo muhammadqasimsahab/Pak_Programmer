@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pak_programmer/module/bottom_nav_home/controller/home_getLanguage_controller.dart';
+import 'package:pak_programmer/module/language_detailpage.dart/view/language_detail_view.dart';
 import 'package:pak_programmer/util/api.dart';
 import 'package:pak_programmer/util/common_Text.dart';
 import 'package:sizer/sizer.dart';
@@ -31,59 +32,75 @@ class LanguageContainer extends StatelessWidget {
           ),
         ],
       ),
-      height: 19.h,
+      // height: 24.h,
+       height: Get.size.height*0.24,
       child: Obx(() {
        if(getLanguageController.isLoading.value){
         return Center(child: CircularProgressIndicator(),);
        }else{
-         return GridView.builder(
+         return ListView(
           physics: NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 5,
-              crossAxisSpacing: 5,
-              mainAxisSpacing: 5),
-          // scrollDirection: Axis.horizontal,
-          itemCount:
-              getLanguageController.get_course_ProductList.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.only(left: 2.w,top: 1.2.h),
-              child: Center(
-                child: Container(
-                  
-             height: 30.h,
-                      width: 30.w,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                          border:
-                          Border.all(color: Colors.white, width: 0.5)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        height: 0.6.h,
-                      ),
-                      Image.network(
-                        AppConstants.image_base_url +
-                            getLanguageController
-                                .get_course_ProductList[index]
-                                .languageImage,
-                        width: 17.w,
-                        height: 3.h,
-                      ),
-                       
-                      commonText(title: getLanguageController
-                          .get_course_ProductList[index].languageTitle,textSize: 9.sp,textOverflow: TextOverflow.ellipsis,)
-                   ,SizedBox(height: 1.2.h,),
-                    ],
-                  ),
-                ),
-              ),
-            );
-          },
-        );
+           children: [
+              SizedBox(height: 1.2.h,),
+             InkWell(
+              onTap: (){
+                Get.to(LanguageDetailPage(),transition: Transition.fadeIn);
+              },
+               child: Container(
+                height: 23.h,
+                 child: GridView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 5,
+                      crossAxisSpacing: 0,
+                      mainAxisSpacing: 20),
+                  // scrollDirection: Axis.horizontal,
+                  itemCount:
+                      getLanguageController.get_course_ProductList.length,
+                  itemBuilder: (context, index) {
+                    return ListView(
+                      physics: NeverScrollableScrollPhysics(),
+                      //  crossAxisAlignment: CrossAxisAlignment.center,
+                      //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                       children: [
+                        //  SizedBox(
+                        //    height: 2.h,
+                        //  ),
+                         Padding(
+                           padding: const EdgeInsets.only(left: 8,right: 8,),
+                           child: Container(
+                            width: 25.w,
+                            height: 7.h,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle
+                            ),
+                             child: Padding(
+                               padding: const EdgeInsets.all(5.0),
+                              child: Image.network(
+                                 AppConstants.image_base_url +
+                                     getLanguageController
+                                         .get_course_ProductList[index]
+                                         .languageImage,
+                            //      width: 25.w,
+                            // height: 7.h,
+                               ),
+                             ),
+                           ),
+                         ),
+                          
+                              commonText(title: getLanguageController
+                              .get_course_ProductList[index].languageTitle,textSize: 9.sp,textOverflow: TextOverflow.ellipsis,)
+                       ,
+                     
+                       ],
+                     );
+                  },
+                     ),
+               ),
+             ),
+           ],
+         );
      
        }
       }),

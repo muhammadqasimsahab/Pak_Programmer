@@ -7,6 +7,7 @@ class ReusableTextFiled extends StatelessWidget {
       {super.key,
       required this.hintText,
       this.suffixicon,
+      this.enableBordercolor= PColor.secondryColor,
       this.autovalidate,
       this.validate,
       this.controller,
@@ -14,6 +15,7 @@ class ReusableTextFiled extends StatelessWidget {
   var hintText;
   Widget? suffixicon;
   final validate;
+  Color enableBordercolor;
   final controller;
   AutovalidateMode? autovalidate;
   bool? visiable;
@@ -27,7 +29,7 @@ class ReusableTextFiled extends StatelessWidget {
       autovalidateMode: autovalidate,
       decoration: InputDecoration(
          enabledBorder: UnderlineInputBorder(      
-                      borderSide: BorderSide(color: PColor.secondryColor),   
+                      borderSide: BorderSide(color:enableBordercolor),   
                       ),  
               focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color:PColor.secondryColor),

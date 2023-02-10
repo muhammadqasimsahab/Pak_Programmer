@@ -1,4 +1,4 @@
-import 'package:pak_programmer/module/bottom_nav_home/model/home_model.dart';
+import 'package:pak_programmer/module/bottom_nav_home/model/course_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:pak_programmer/util/api.dart';
 class HomeServiesClass{

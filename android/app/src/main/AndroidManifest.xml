@@ -1,9 +1,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pak_programmer">
+    <queries>
+        <!-- If your app checks for SMS support -->
+        <intent>
+          <action android:name="android.intent.action.VIEW" />
+          <data android:scheme="sms" />
+        </intent>
+        <!-- If your app checks for call support -->
+        <intent>
+          <action android:name="android.intent.action.VIEW" />
+          <data android:scheme="tel" />
+        </intent>
+      </queries>
    <application
-        android:label="pak_programmer"
+        android:label="Pak Programmers"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="ca-app-pub-5237548359530294~8295633271"/>
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -30,5 +47,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+            <!-- Provide required visibility configuration for API level 30 and above -->
+
     </application>
 </manifest>

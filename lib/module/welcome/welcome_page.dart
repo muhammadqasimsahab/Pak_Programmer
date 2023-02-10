@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:pak_programmer/module/auth/logo/logo_screen.dart';
 import 'package:pak_programmer/constant/constant_button.dart';
 import 'package:pak_programmer/images_class/images_class.dart';
+import 'package:pak_programmer/module/bottom_nav/bottom_nav.dart';
 import 'package:pak_programmer/util/app_style.dart';
 import 'package:pak_programmer/util/color.dart';
+import 'package:pak_programmer/util/common_Text.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../Widgets/reuseable_button.dart';
@@ -15,6 +17,20 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: PColor.secondryColor,
+        automaticallyImplyLeading: false,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+              onTap: (){
+            Get.to(PakProgrammerBottomNav(),transition: Transition.fadeIn);
+              },
+              child: Center(child: commonText(title: "Skip",color: Colors.white,textSize: 14.sp,))),
+          )
+                  ],
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
+
+import '../../util/color.dart';
 
 class LanguageScreen extends StatelessWidget {
   const LanguageScreen({Key? key}) : super(key: key);
@@ -6,9 +9,17 @@ class LanguageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Language"),
-      ),
+      appBar:  AppBar(
+          // centerTitle: true,
+          elevation: 0.2,
+          automaticallyImplyLeading: false,
+          // leading: IconButton(onPressed: (){Get.back();}, icon: Icon(Icons.arrow_back_ios)),
+          backgroundColor:PColor.secondryColor,
+          title: Text(
+            'Language',
+            style: TextStyle(color: Colors.white, fontSize: 13.sp),
+          ),
+        ),
     );
   }
 }

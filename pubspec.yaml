@@ -42,6 +42,11 @@ dependencies:
   connectivity_plus: ^3.0.2
   lottie: ^2.1.0
   flutter_rating_bar: ^4.0.0
+  flutter_otp_text_field: ^1.1.0+2
+  google_mobile_ads: ^2.3.0
+  url_launcher: ^6.1.9
+  shimmer: ^2.0.0
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +74,7 @@ flutter:
   assets:
      - assets/images/
      - assets/image/
+     - assets/
      - assets/lottiefile/
 
   # An image asset can refer to one or more resolution-specific "variants", see
