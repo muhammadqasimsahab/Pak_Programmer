@@ -44,8 +44,8 @@ class _LogInScreenState extends State<LogInScreen> {
                     SizedBox(height: 2.h,),
                     Image.asset(
                       PImages.logo,
-                      height: 20.h,
-                      width: 30.w,
+                      height: 15.h,
+                      width: 25.w,
                     ),
                     // SizedBox(height: Get.size.height * 0.02),
                     Row(
@@ -141,7 +141,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 13.h),
+                    SizedBox(height: 8.h),
 
                     MaterialButton(
                       minWidth: Get.size.width - 20.w,

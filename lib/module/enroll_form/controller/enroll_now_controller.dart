@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:pak_programmer/module/bottom_nav/bottom_nav.dart';
 import 'package:pak_programmer/util/api.dart';
+import 'package:pak_programmer/util/color.dart';
 class EnrollNowController extends GetxController {
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
@@ -13,8 +15,9 @@ class EnrollNowController extends GetxController {
   final qualificationNameController = TextEditingController();
   final interastedMessageNameController = TextEditingController();
   final courseNameController = TextEditingController();
-  RxBool isLoading=false.obs;
-  GlobalKey<FormState> login = GlobalKey<FormState>();
+  var isLoading=false.obs;
+    final formkey = GlobalKey<FormState>();
+  // GlobalKey<FormState> login = GlobalKey<FormState>();
   String? emailValidate(val) {
     // bool emailvalid =
     //     RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$').hasMatch(val);
@@ -86,28 +89,34 @@ class EnrollNowController extends GetxController {
   }
   void signUpNow() async{
     try {
-      isLoading.value=true;
+      isLoading(true);
       final response=await http.post(Uri.parse(AppConstants.signup_url+AppConstants.course_registeration)
       ,body: {
-        "first_name":firstNameController,
-        "last_name":lastNameController,
-        "email":emailNameController,
-        "phone":phoneNameController,
-        "city":cityNameController,
-        "qualification":qualificationNameController,
-        "course":courseNameController,
+        "first_name":firstNameController.toString(),
+        "last_name":lastNameController.toString(),
+        "email":emailNameController.text.trim(),
+        "phone":phoneNameController.toString(),
+        "city":cityNameController.toString(),
+        "qualification":qualificationNameController.toString(),
+        "interest_reason":interastedMessageNameController.toString(),
+        "course":courseNameController.toString(),
       },
       );
       var data=jsonDecode(response.body);
       print(response.statusCode);
       print(data);
       if(response.statusCode==200){
-       isLoading.value=false;
+       isLoading(false);
+         Get.snackbar("Sign Up Successfully", data["message"],snackPosition: SnackPosition.BOTTOM,backgroundColor: PColor.secondryColor.withOpacity(0.4) );
+        Get.to(PakProgrammerBottomNav());
+        
       }else{
-
+        isLoading(false);
+         Get.snackbar("Error", data["message"],snackPosition: SnackPosition.BOTTOM,backgroundColor: PColor.secondryColor.withOpacity(0.4));
       }
     } catch (e) {
-      
+        isLoading(false);
+      Get.snackbar("yaha par error he", e.toString(),snackPosition: SnackPosition.BOTTOM,backgroundColor: PColor.secondryColor.withOpacity(0.4));
     }
   }
 

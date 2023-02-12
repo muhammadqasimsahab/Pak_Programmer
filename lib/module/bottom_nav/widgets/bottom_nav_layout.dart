@@ -34,7 +34,7 @@ class _GenralTabBarMaterialWidgetsState extends State<GenralTabBarMaterialWidget
           buildTabItem(index: 1, icon:PImages.fullstack,title: 'FULL STACK'),
           buildTabItem(index: 2, icon:PImages.home,title: 'HOME'),
           buildTabItem(index: 3, icon:PImages.project,title: "PROJECT"),
-          buildTabItem(index: 0, icon:PImages.language,title: "LANGUAGES"),
+          buildTabItem(index: 0, icon:PImages.language,title: "SETTING"),
 
       ],
     ));

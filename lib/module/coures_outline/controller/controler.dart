@@ -18,9 +18,6 @@ var isLoading=true.obs;
   // var productlist=<StudentFindTutorsModelClass>[].obs;
   var productlist=List<CoursesModelClass>.empty().obs;
   var connectionStatus=0.obs;
-  // final Connectivity _connectivity=Connectivity();
- 
-  // late StreamSubscription<ConnectivityResult> _connectivitySubscription;
   @override
   void onReady() {
     // TODO: implement onReady

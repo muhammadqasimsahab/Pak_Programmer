@@ -1,14 +1,18 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:pak_programmer/util/color.dart';
-import 'package:pak_programmer/util/common_Text.dart';
+import 'package:pak_programmer/constant/tabbar_dot_indicator.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'package:pak_programmer/util/color.dart';
+import 'package:pak_programmer/util/common_Text.dart';
+
 class LanguageDetailPage extends StatefulWidget {
-  const LanguageDetailPage({super.key});
+  String name;
+   LanguageDetailPage({super.key,required this.name});
 
   @override
   State<LanguageDetailPage> createState() => _LanguageDetailPageState();
@@ -39,7 +43,7 @@ void lunchWhatApp( number,message) async{
           },child: Icon(Icons.whatsapp),),
         appBar: AppBar(
             title: commonText(
-              title: "java",
+              title: widget.name,
               textSize: 13.sp,
               color: PColor.color_white,
             ),
@@ -47,15 +51,16 @@ void lunchWhatApp( number,message) async{
                 onPressed: () {
                   Get.back();
                 },
-                icon: Icon(Icons.arrow_back_ios)),
+                icon: const Icon(Icons.arrow_back_ios)),
             backgroundColor: PColor.secondryColor,
             bottom: TabBar(
+              // indicator: CirculerIndicator(color: PColor.color_white,radius: 0.8.h),
               isScrollable: true,
               indicatorSize: TabBarIndicatorSize.label,
               indicatorColor: Colors.white,
               labelColor: PColor.color_white,
               unselectedLabelColor: Colors.grey,
-              tabs: [
+              tabs: const[
                 Tab(
                   text: 'Basic',
                 ),
@@ -72,7 +77,9 @@ void lunchWhatApp( number,message) async{
             )
           
             ),
-        body: TabBarView(children: const [
+        body: const TabBarView(
+          
+          children:  [
           Center(
             child: Text(" Basic"),
           ),
@@ -102,4 +109,5 @@ void lunchWhatApp( number,message) async{
       );
     }
 }
+
 }

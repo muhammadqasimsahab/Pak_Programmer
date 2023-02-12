@@ -11,7 +11,10 @@ import 'package:pak_programmer/module/bottom_nav_home/controller/home_getLanguag
 import 'package:pak_programmer/module/bottom_nav_home/controller/home_get_courseController.dart';
 import 'package:pak_programmer/module/bottom_nav_home/controller/home_top_banner_controller.dart';
 import 'package:pak_programmer/module/bottom_nav_home/servies/home_servies.dart';
+import 'package:pak_programmer/module/bottom_nav_home/shimmer/banner_shimmer.dart';
 import 'package:pak_programmer/module/bottom_nav_home/shimmer/course_shimmer.dart';
+import 'package:pak_programmer/module/bottom_nav_home/shimmer/language_shimmer.dart';
+import 'package:pak_programmer/module/view%20all/view_all.dart';
 import 'package:pak_programmer/util/api.dart';
 // import 'package:pak_programmer/pages/home_page/component/find_your_career.dart';
 import 'package:pak_programmer/util/color.dart';
@@ -63,7 +66,18 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
                   fontSize: 13.sp),
             )
           ],
+
         ),
+        actions: [
+           PopupMenuButton<int>(
+            icon: Icon(Icons.more_vert,color: Colors.black,),
+          onSelected: (item) => handleClick(item),
+          itemBuilder: (context) => [
+            PopupMenuItem<int>(value: 0, child: Text('Item 1')),
+            PopupMenuItem<int>(value: 1, child: Text('Item 2')),
+          ],
+        ),
+        ],
       ),
       body: SingleChildScrollView(
         
@@ -72,6 +86,7 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
             Container(
                 // height: 15.h,
                 width: Get.size.width,
+                // child:BannerShimmer()),
                 child: HomeTopBanner(getbannerController: getbannerController)),
             search_box(context),
             SizedBox(
@@ -92,9 +107,24 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
             SizedBox(
               height: 0.5.h,
             ),
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal: 3.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  commonText(title: ""),
+                  InkWell(
+                    onTap: (){
+                      Get.to(ViewAllLanguage(),transition: Transition.fadeIn);
+                    },
+                    child: commonText(title: "view all",color: PColor.color_black,textSize: 12.sp)),
+                ],
+              ),
+            ),
             Container(
                 //  height: 24.h,
                 width: Get.size.width,
+                // child:LanguageShimmer()),
                 child: LanguageContainer(
                     getLanguageController: getLanguageController)),
             SizedBox(
@@ -182,7 +212,7 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
               ],
             ),
             SizedBox(
-              height: 3.h,
+              height: 2.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -194,7 +224,7 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
               ],
             ),
             SizedBox(
-              height: Get.size.height * 0.09,
+              height: 12.h,
             )
           ],
         ),
@@ -291,6 +321,15 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
     );
   }
 
+  void handleClick(int item) {
+  switch (item) {
+    case 0:
+      break;
+    case 1:
+      break;
+  }
+}
+
   Container downloadOurProject_Container(
       String title, String seconTitle, String freeIcon, String project) {
     return Container(
@@ -374,21 +413,26 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
 
   Container search_box(BuildContext context) {
     return Container(
+      height: 6.h,
       margin: EdgeInsets.only(left: 2.w, right: 2.w, top: 1.h, bottom: 1.h),
       decoration: BoxDecoration(
         border: Border.all(color: PColor.appColor.withOpacity(0.3), width: 1),
         borderRadius: BorderRadius.circular(16),
       ),
       child: TextFormField(
+        
+        // enableSuggestions: ,
+        style: TextStyle(fontSize: 10.sp),
         cursorColor: Color(0xff019687),
         decoration: InputDecoration(
             // contentPadding: EdgeInsets.only(top: 12.sp),
-            hintStyle: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w100),
+            hintStyle: TextStyle(fontSize: 9.sp, fontWeight: FontWeight.w100),
             prefixIcon: Icon(
               Icons.search,
               size: 18.sp,
               color: Colors.black,
             ),
+            contentPadding: EdgeInsets.only(top: 1.h),
             hintText: "Search Messages",
             border: InputBorder.none
             // border: OutlineInputBorder(

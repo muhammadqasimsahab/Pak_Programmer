@@ -7,7 +7,7 @@ class ReusableTextFiled extends StatelessWidget {
       {super.key,
       required this.hintText,
       this.suffixicon,
-      this.enableBordercolor= PColor.secondryColor,
+      this.enableBordercolor = PColor.secondryColor,
       this.autovalidate,
       this.validate,
       this.controller,
@@ -22,22 +22,20 @@ class ReusableTextFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      
       obscureText: visiable!,
       validator: validate,
       controller: controller,
       autovalidateMode: autovalidate,
       decoration: InputDecoration(
-         enabledBorder: UnderlineInputBorder(      
-                      borderSide: BorderSide(color:enableBordercolor),   
-                      ),  
-              focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color:PColor.secondryColor),
-                   ),  
-                 suffixIcon: suffixicon,
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: enableBordercolor),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: PColor.secondryColor),
+          ),
+          suffixIcon: suffixicon,
           hintText: hintText,
-
-          hintStyle: TextStyle(color: Colors.grey.shade400,fontSize: 10.sp)
+          hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 10.sp)
           // enabledBorder:
           //     OutlineInputBorder(borderRadius: BorderRadius.circular(10))
           ),

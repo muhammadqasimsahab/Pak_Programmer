@@ -1,12 +1,12 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pak_programmer/images_class/images_class.dart';
 import 'package:pak_programmer/module/bottom_nav_home/controller/home_get_courseController.dart';
+import 'package:pak_programmer/module/bottom_nav_home/shimmer/course_shimmer.dart';
 // import 'package:pak_programmer/module/coures_outline/view/tut_list.dart';
 import 'package:pak_programmer/module/coures_outline/view/view.dart';
-// import 'package:pak_programmer/module/coures_outline/view/view.dart';
-// import 'package:pak_programmer/module/fyp/view/fyp.dart';
 import 'package:pak_programmer/util/api.dart';
 import 'package:sizer/sizer.dart';
 
@@ -23,12 +23,12 @@ class HomeCoursesContainer extends StatelessWidget {
     return Container(
       // margin: EdgeInsets.only(left: 1.5.w),
        margin: EdgeInsets.only(left: 1.w,top: 1.h,right: 1.w),
-      // height: 25.h,
-      height: Get.size.height*0.25,
+      height: 27.h,
+      // height: Get.size.height*0.25,
       child: Obx(() {
         if(getCoursesController.isLoading.value){
           return Center(
-            child: CircularProgressIndicator(),
+            child: CourseShimmer(),
           );
         }else{
            return ListView.builder(
@@ -39,7 +39,7 @@ class HomeCoursesContainer extends StatelessWidget {
               padding: EdgeInsets.only(left: 2.w),
               child: InkWell(
                 onTap: (){
-                  Get.to(CourseOutline(),transition: Transition.fadeIn);
+                  Get.to(CourseOutline(name: getCoursesController.get_course_ProductList[index].courseTitle),transition: Transition.fadeIn);
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -57,7 +57,7 @@ class HomeCoursesContainer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  height: 25.h,
+                  height: 26.h,
                   width: Get.size.width / 2.2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,14 +66,20 @@ class HomeCoursesContainer extends StatelessWidget {
                         height: 2.h,
                       ),
                       Container(
-                        child: Image.network(
-                          AppConstants.image_base_url +
+                        child:ClipRRect(
+                            child: CachedNetworkImage(
+                              imageUrl:  AppConstants.image_base_url +
                               getCoursesController
                                   .get_course_ProductList[index]
                                   .courseImage,
                           width: 20.w,
                           height: 6.h,
-                        ),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
+                              placeholder: (context, url) => CourseNoImageShowShimmer(),
+                            ),
+                          ),
+                     
                       ),
                       Container(
                         child: Column(

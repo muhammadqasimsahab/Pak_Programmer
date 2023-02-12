@@ -1,19 +1,23 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pak_programmer/module/bottom_nav_home/controller/home_getLanguage_controller.dart';
+import 'package:pak_programmer/module/bottom_nav_home/shimmer/language_shimmer.dart';
+import 'package:pak_programmer/module/coures_outline/controller/controler.dart';
 import 'package:pak_programmer/module/language_detailpage.dart/view/language_detail_view.dart';
 import 'package:pak_programmer/util/api.dart';
 import 'package:pak_programmer/util/common_Text.dart';
 import 'package:sizer/sizer.dart';
 
 class LanguageContainer extends StatelessWidget {
-  const LanguageContainer({
+   LanguageContainer({
     Key? key,
     required this.getLanguageController,
   }) : super(key: key);
 
   final HomeGetLanguageController getLanguageController;
+final c=Get.put(CourseOutlineController());
 
   @override
   Widget build(BuildContext context) {
@@ -42,23 +46,23 @@ class LanguageContainer extends StatelessWidget {
           physics: NeverScrollableScrollPhysics(),
            children: [
               SizedBox(height: 1.2.h,),
-             InkWell(
-              onTap: (){
-                Get.to(LanguageDetailPage(),transition: Transition.fadeIn);
+             Container(
+              height: 23.h,
+               child: GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 5,
+                    crossAxisSpacing: 0,
+                    mainAxisSpacing: 20),
+                // scrollDirection: Axis.horizontal,
+                itemCount:
+                    getLanguageController.get_course_ProductList.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                      onTap: (){
+              Get.to(LanguageDetailPage(name: getLanguageController.get_course_ProductList[index].languageTitle),transition: Transition.fadeIn);
               },
-               child: Container(
-                height: 23.h,
-                 child: GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 5,
-                      crossAxisSpacing: 0,
-                      mainAxisSpacing: 20),
-                  // scrollDirection: Axis.horizontal,
-                  itemCount:
-                      getLanguageController.get_course_ProductList.length,
-                  itemBuilder: (context, index) {
-                    return ListView(
+                    child: ListView(
                       physics: NeverScrollableScrollPhysics(),
                       //  crossAxisAlignment: CrossAxisAlignment.center,
                       //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,15 +81,27 @@ class LanguageContainer extends StatelessWidget {
                             ),
                              child: Padding(
                                padding: const EdgeInsets.all(5.0),
-                              child: Image.network(
-                                 AppConstants.image_base_url +
+                              child: ClipRRect(
+                            child: CachedNetworkImage(
+                              imageUrl:  AppConstants.image_base_url +
                                      getLanguageController
                                          .get_course_ProductList[index]
                                          .languageImage,
-                            //      width: 25.w,
-                            // height: 7.h,
-                               ),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
+                              placeholder: (context, url) => NoImageShowShimmer(),
+                            ),
+                          ),
+                            //    Image.network(
+                            //      AppConstants.image_base_url +
+                            //          getLanguageController
+                            //              .get_course_ProductList[index]
+                            //              .languageImage,
+                            // //      width: 25.w,
+                            // // height: 7.h,
+                            //    ),
                              ),
+                            // child: Text(getLanguageController.get_course_ProductList[index].languageTitle),
                            ),
                          ),
                           
@@ -94,10 +110,10 @@ class LanguageContainer extends StatelessWidget {
                        ,
                      
                        ],
-                     );
-                  },
                      ),
-               ),
+                  );
+                },
+                   ),
              ),
            ],
          );
