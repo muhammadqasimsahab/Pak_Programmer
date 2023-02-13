@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:pak_programmer/module/bottom_nav/bottom_nav.dart';
+import 'package:pak_programmer/module/enroll_form/servies/enroll_dropdown_servies.dart';
+import 'package:pak_programmer/module/project/model/find_tutorModelClass.dart';
 import 'package:pak_programmer/util/api.dart';
 import 'package:pak_programmer/util/color.dart';
 class EnrollNowController extends GetxController {
@@ -87,7 +89,8 @@ class EnrollNowController extends GetxController {
     }
     return null;
   }
-  void signUpNow() async{
+   signUpNow(String course) async{
+
     try {
       isLoading(true);
       final response=await http.post(Uri.parse(AppConstants.signup_url+AppConstants.course_registeration)
@@ -99,7 +102,7 @@ class EnrollNowController extends GetxController {
         "city":cityNameController.toString(),
         "qualification":qualificationNameController.toString(),
         "interest_reason":interastedMessageNameController.toString(),
-        "course":courseNameController.toString(),
+        "course":course.toString(),
       },
       );
       var data=jsonDecode(response.body);
@@ -120,4 +123,46 @@ class EnrollNowController extends GetxController {
     }
   }
 
+
+  // var productlist=<StudentFindTutorsModelClass>[].obs;
+  var productlist=List<ProjectListModelClass>.empty().obs;
+
+  // final Connectivity _connectivity=Connectivity();
+ 
+  // late StreamSubscription<ConnectivityResult> _connectivitySubscription;
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    super.onReady();
+  }
+  @override
+  void onInit() {
+    // TODO: implement onInit
+   
+    super.onInit();
+   
+    // initConnectivity();
+    // _connectivitySubscription=_connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+      fetchProduct();
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    
+  }
+  void fetchProduct() async{
+    try {
+      isLoading(true);
+      // isLoading.value=true;
+      var products=await EnrollDropdownServices.getFindtutors();
+      if(products!=null){
+        productlist.assignAll(products);
+      }
+    } finally {
+      isLoading(false);
+      
+    }
+  }
 }

@@ -52,7 +52,7 @@ void lunchWhatApp( number,message) async{
                   Get.back();
                 },
                 icon: const Icon(Icons.arrow_back_ios)),
-            backgroundColor: PColor.secondryColor,
+            backgroundColor: PColor.appColor,
             bottom: TabBar(
               // indicator: CirculerIndicator(color: PColor.color_white,radius: 0.8.h),
               isScrollable: true,

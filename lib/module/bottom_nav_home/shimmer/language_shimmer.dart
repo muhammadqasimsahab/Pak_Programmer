@@ -14,9 +14,9 @@ class LanguageShimmer extends StatelessWidget {
         height: 23.h,
         child: Row(
           children: [
-            SizedBox(
-              width: 2.w,
-            ),
+            // SizedBox(
+            //   width: 2.w,
+            // ),
             shimmerContainer()
           ],
         ));
@@ -26,7 +26,7 @@ class LanguageShimmer extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: Colors.grey.shade200),
-      width: Get.size.width - 4.w,
+      width: Get.size.width - 7.w,
       height: 20.h,
       child: Shimmer.fromColors(
           highlightColor: Colors.white,

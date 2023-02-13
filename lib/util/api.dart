@@ -8,9 +8,15 @@ class AppConstants {
   static const String find_tutors = '?results=10';
   static const String tutor_profile = '?results=10';
   static const String message = '?results=10';
+  static const String why_choose_us_url = 'why_choose_us';
+  static const String base_url_local_url = ' http://192.168.10.13:8000/api/';
   static const String base_url = 'https://pakprogrammers.com/pakprogrammer/api/';
   static const String signup_url = 'https://pakprogrammers.com/pakprogrammer/api/';
+  // https://pakprogrammers.com/pakprogrammer/api/getDropdown
   static const String course_registeration = 'course_registration/';
+  static const String enroll_now_dropdown = 'getDropdown';
+  static const String signup = 'signup/';
+  static const String fyp_url = 'fyp';
   static const String get_course = 'get_courses';
   static const String get_language = 'get_languages';
   static const String get_banner = 'get_banners';

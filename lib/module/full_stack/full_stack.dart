@@ -12,7 +12,7 @@ class FullStackScreen extends StatelessWidget {
           elevation: 0.2,
           automaticallyImplyLeading: false,
           // leading: IconButton(onPressed: (){Get.back();}, icon: Icon(Icons.arrow_back_ios)),
-          backgroundColor:PColor.secondryColor,
+          backgroundColor:PColor.appColor,
           title: Text(
             'Full Stack',
             style: TextStyle(color: Colors.white, fontSize: 13.sp),

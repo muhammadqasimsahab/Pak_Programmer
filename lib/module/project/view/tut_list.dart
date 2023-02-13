@@ -30,7 +30,7 @@ class _BottomNavProjectPageState extends State<BottomNavProjectPage> {
           elevation: 0.2,
           automaticallyImplyLeading: false,
           // leading: IconButton(onPressed: (){Get.back();}, icon: Icon(Icons.arrow_back_ios)),
-          backgroundColor:PColor.secondryColor,
+          backgroundColor:PColor.appColor,
           title: Text(
             'Flutter Free Or Paid Project',
             style: TextStyle(color: Colors.white, fontSize: 13.sp),

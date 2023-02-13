@@ -18,24 +18,10 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: PColor.secondryColor,
+        title: commonText(title: "Welcome",color: PColor.color_white,textSize: 12.sp,),
+        backgroundColor: PColor.appColor,
         automaticallyImplyLeading: false,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InkWell(
-                onTap: () {
-                  Get.to(PakProgrammerBottomNav(),
-                      transition: Transition.fadeIn);
-                },
-                child: Center(
-                    child: commonText(
-                  title: "Skip",
-                  color: Colors.white,
-                  textSize: 14.sp,
-                ))),
-          )
-        ],
+       
       ),
       body: Container(
         child: Stack(
@@ -45,8 +31,6 @@ class WelcomePage extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: SingleChildScrollView(
                 child: Column(
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
                       padding: EdgeInsets.only(top: 10.h),
@@ -100,9 +84,9 @@ class WelcomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ConstantButton(
-                      name: "Getting Started",
+                      name: "Go To Home",
                       onpress: () {
-                        Get.to(LogInScreen(), transition: Transition.fadeIn);
+                        Get.to(PakProgrammerBottomNav(), transition: Transition.fadeIn);
                       }),
                   const SizedBox(
                     height: 10,

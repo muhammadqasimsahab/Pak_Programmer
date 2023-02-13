@@ -17,7 +17,7 @@ class ConstantButton extends StatefulWidget {
       {Key? key,
       required this.name,
       required this.onpress,
-      this.backColor = PColor.secondryColor,
+      this.backColor = PColor.appColor,
       this.textColor = Colors.white})
       : super(key: key);
 

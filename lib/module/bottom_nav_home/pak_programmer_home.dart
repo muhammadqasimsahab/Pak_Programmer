@@ -92,35 +92,34 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
             SizedBox(
               height: 1.h,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 4.w,
-                ),
-                Text(
-                  'Lets Find Your Career',
-                  style:
-                      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 0.5.h,
-            ),
             Padding(
               padding:  EdgeInsets.symmetric(horizontal: 3.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  commonText(title: ""),
-                  InkWell(
-                    onTap: (){
-                      Get.to(ViewAllLanguage(),transition: Transition.fadeIn);
-                    },
-                    child: commonText(title: "view all",color: PColor.color_black,textSize: 12.sp)),
+                  // SizedBox(
+                  //   width: 4.w,
+                  // ),
+                  Text(
+                    'Lets Find Your Career',
+                    style:
+                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
+                  ),
+                     InkWell(
+                      onTap: (){
+                        Get.to(ViewAllLanguage(),transition: Transition.fadeIn);
+                      },
+                      child:Text( "View All",style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.black,fontSize: 10.sp),))
+                      //  commonText(title: "View All",fontWeight: FontWeight.w600,color: PColor.color_black,textSize: 12.sp)),
                 ],
               ),
             ),
+            SizedBox(
+              height: 0.5.h,
+            ),
+           
             Container(
                 //  height: 24.h,
                 width: Get.size.width,
@@ -425,6 +424,7 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
         style: TextStyle(fontSize: 10.sp),
         cursorColor: Color(0xff019687),
         decoration: InputDecoration(
+          
             // contentPadding: EdgeInsets.only(top: 12.sp),
             hintStyle: TextStyle(fontSize: 9.sp, fontWeight: FontWeight.w100),
             prefixIcon: Icon(
@@ -432,7 +432,7 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
               size: 18.sp,
               color: Colors.black,
             ),
-            contentPadding: EdgeInsets.only(top: 1.h),
+            contentPadding: EdgeInsets.only(top: 1.5.h),
             hintText: "Search Messages",
             border: InputBorder.none
             // border: OutlineInputBorder(

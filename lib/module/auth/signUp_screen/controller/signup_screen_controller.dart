@@ -61,23 +61,14 @@ import 'package:pak_programmer/util/color.dart';
 class SignUpScreenController extends GetxController {
 
 
-// String userFirstName="";
-// String userLastName="";
-// String userEmail="";
-// String userPassword="";
-// String userGender="";
-RxBool isLoading=false.obs;
-  var selectGender="".obs;
-
-  onchangeGender(var value){
-    selectGender.value=value;
-  }
 
   final firstController = TextEditingController().obs;
   final lastController = TextEditingController().obs;
   final emailController = TextEditingController().obs;
   final passwordController = TextEditingController().obs;
   final confirmPasswordController = TextEditingController().obs;
+  RxBool isLoading=false.obs;
+
     var formKey = GlobalKey<FormState>();
   // var checkBoxData=GetXState();
   // var checkbox=checkBoxData.r
@@ -91,49 +82,37 @@ RxBool isLoading=false.obs;
     if (text == null || text.isEmpty) {
       return 'Can\'t be empty';
     }
-    // if (text.length < 8) {
-    //   return 'Too short';
-    // }
     return null;
   }
     String? emailValidate(text) {
     if (text == null || text.isEmpty) {
       return 'Can\'t be empty';
     }
-    // if (text.length < 8) {
-    //   return 'Too short';
-    // }
     return null;
   }
     String? passwordValidate(text) {
     if (text == null || text.isEmpty) {
       return 'Can\'t be empty';
     }
-    // if (text.length < 8) {
-    //   return 'Too short';
-    // }
     return null;
   }
         String? confirmPasswordValidate(text) {
     if (text == null || text.isEmpty) {
       return 'Can\'t be empty';
     }
-    // if (text.length < 8) {
-    //   return 'Too short';
-    // }
     return null;
   }
 
   void signUpNow() async{
     try {
       isLoading.value=true;
-      final response=await http.post(Uri.parse(AppConstants.signup_url+AppConstants.course_registeration)
+      final response=await http.post(Uri.parse(AppConstants.signup_url+AppConstants.signup)
       ,body: {
         "first_name":firstController.value.text,
         "last_name":lastController.value.text,
         "email":emailController.value.text,
         "password":passwordController.value.text,
-        "password":confirmPasswordController.value.text,
+        "password_confirmation":confirmPasswordController.value.text,
       },
       );
       var data=jsonDecode(response.body);

@@ -30,7 +30,7 @@ class _LogInScreenState extends State<LogInScreen> {
         leading: IconButton(onPressed: (){
           Get.back();
         }, icon: Icon(Icons.arrow_back_ios)),
-        backgroundColor: PColor.secondryColor,
+        backgroundColor: PColor.appColor,
         title: commonText(title: "Login",color: PColor.color_white,textSize: 14.sp,),
       ),
       body: Padding(
@@ -141,11 +141,12 @@ class _LogInScreenState extends State<LogInScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 8.h),
+                    SizedBox(height: 17.h),
 
                     MaterialButton(
                       minWidth: Get.size.width - 20.w,
                       height: 6.h,
+                      
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16)),
                       child: Text(
@@ -155,7 +156,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       onPressed: () {
                         controllerforall.FormValidation();
                       },
-                      color: PColor.secondryColor,
+                      color: PColor.appColor,
                     ),
                     SizedBox(height: 25),
                     Row(

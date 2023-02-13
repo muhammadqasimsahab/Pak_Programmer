@@ -5,18 +5,20 @@ import 'package:get/get.dart';
 import 'package:pak_programmer/images_class/images_class.dart';
 import 'package:pak_programmer/module/bottom_nav_home/controller/home_get_courseController.dart';
 import 'package:pak_programmer/module/bottom_nav_home/shimmer/course_shimmer.dart';
+import 'package:pak_programmer/module/coures_outline/controller/controler.dart';
 // import 'package:pak_programmer/module/coures_outline/view/tut_list.dart';
 import 'package:pak_programmer/module/coures_outline/view/view.dart';
 import 'package:pak_programmer/util/api.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeCoursesContainer extends StatelessWidget {
-  const HomeCoursesContainer({
+   HomeCoursesContainer({
     Key? key,
     required this.getCoursesController,
   }) : super(key: key);
 
   final HomeGetCoursesController getCoursesController;
+  final c=Get.put(CourseOutlineController());
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class HomeCoursesContainer extends StatelessWidget {
       height: 27.h,
       // height: Get.size.height*0.25,
       child: Obx(() {
-        if(getCoursesController.isLoading.value){
+        if(c.isLoading.value){
           return Center(
             child: CourseShimmer(),
           );

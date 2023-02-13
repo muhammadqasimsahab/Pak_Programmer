@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -7,6 +9,7 @@ import 'package:pak_programmer/module/bottom_nav/bottom_nav.dart';
 import 'package:pak_programmer/module/enroll_form/controller/enroll_now_controller.dart';
 import 'package:pak_programmer/util/color.dart';
 import 'package:sizer/sizer.dart';
+import 'package:http/http.dart' as http;
 
 class SubscriptionForm extends StatefulWidget {
   const SubscriptionForm({super.key});
@@ -18,7 +21,29 @@ class SubscriptionForm extends StatefulWidget {
 class _SubscriptionFormState extends State<SubscriptionForm> {
   final enrollController = Get.put(EnrollNowController());
   // final formkey = GlobalKey<FormState>();
-  String dropdownValue = 'Java';
+  List categoryItemlist = [];
+
+  Future getAllCategory() async {
+    var baseUrl =
+        "https://pakprogrammers.com/pakprogrammer/api/getDropdown";
+
+    final response = await http.get(Uri.parse(baseUrl));
+
+    if (response.statusCode == 200) {
+      var jsonData = json.decode(response.body);
+      setState(() {
+        categoryItemlist = jsonData;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getAllCategory();
+  }
+
+  var dropdownvalue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -304,54 +329,25 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 4.w),
                         child: Container(
-                          child: DropdownButton<String>(
+                          child: DropdownButton(
                             isExpanded: true,
-                            // Step 3.
-                            value: dropdownValue,
-                            // Step 4.
-                            items: <String>['Java', 'C#', 'C++', 'Python']
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value,
-                                  style: TextStyle(fontSize: 13.sp),
-                                ),
+                            hint: Text('hooseNumber'),
+                            items: categoryItemlist.map((item) {
+                              return DropdownMenuItem(
+                                value: item['course_title'].toString(),
+                                child: Text(item['course_title'].toString()),
                               );
                             }).toList(),
-                            // Step 5.
-                            onChanged: (String? newValue) {
+                            onChanged: (newVal) {
                               setState(() {
-                                dropdownValue = newValue!;
+                                dropdownvalue = newVal;
                               });
                             },
+                            value: dropdownvalue,
                           ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.note_add,
-                            color: PColor.secondryColor,
-                          ),
-                          SizedBox(
-                            width: 2.w,
-                          ),
-                          Container(
-                            width: Get.size.width - 20.w,
-                            child: ReusableTextFiled(
-                              enableBordercolor: PColor.secondryColor,
-                              autovalidate: AutovalidateMode.onUserInteraction,
-                              hintText: '',
-                              controller: enrollController.courseNameController,
-                              visiable: false,
-                              validate: (text) {
-                                return enrollController.curseValidate(text);
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
+                   
                       SizedBox(
                         height: 2.h,
                       ),
@@ -367,29 +363,30 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
                   padding: EdgeInsets.only(bottom: 2.h),
                   child: MaterialButton(
                     onPressed: () {
-                         final isValid = enrollController.formkey.currentState!.validate();
-                  
-                          if (!isValid) {
-                            return;
-                          }
-                          enrollController.formkey.currentState!.save();
-                                       print(
-                          " first name is : ${enrollController.firstNameController.value.text}");
-                      print(
-                          " last name is : ${enrollController.lastNameController.value.text}");
-                      print(
-                          " email name is : ${enrollController.emailNameController.value.text}");
-                      print(
-                          " city name is : ${enrollController.cityNameController.value.text}");
-                      print(
-                          " phone name is : ${enrollController.phoneNameController.value.text}");
-                      print(
-                          " qualify name is : ${enrollController.qualificationNameController.value.text}");
-                      print(
-                          " interast name is : ${enrollController.interastedMessageNameController.value.text}");
-                      print(
-                          " course name is : ${enrollController.courseNameController.value.text}");
-                     enrollController.signUpNow();      
+                      final isValid =
+                          enrollController.formkey.currentState!.validate();
+
+                      if (!isValid) {
+                        return;
+                      }
+                      enrollController.formkey.currentState!.save();
+                      //                  print(
+                      //     " first name is : ${enrollController.firstNameController.value.text}");
+                      // print(
+                      //     " last name is : ${enrollController.lastNameController.value.text}");
+                      // print(
+                      //     " email name is : ${enrollController.emailNameController.value.text}");
+                      // print(
+                      //     " city name is : ${enrollController.cityNameController.value.text}");
+                      // print(
+                      //     " phone name is : ${enrollController.phoneNameController.value.text}");
+                      // print(
+                      //     " qualify name is : ${enrollController.qualificationNameController.value.text}");
+                      // print(
+                      //     " interast name is : ${enrollController.interastedMessageNameController.value.text}");
+                      // print(
+                      //     " course name is : ${enrollController.courseNameController.value.text}");
+                      enrollController.signUpNow(dropdownvalue);
                       // Get.to(SubscriptionForm(),transition: Transition.fadeIn);
                     },
                     child: Text(

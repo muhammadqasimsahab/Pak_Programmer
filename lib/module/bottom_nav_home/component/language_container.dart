@@ -19,6 +19,7 @@ class LanguageContainer extends StatelessWidget {
   final HomeGetLanguageController getLanguageController;
 final c=Get.put(CourseOutlineController());
 
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,10 +40,11 @@ final c=Get.put(CourseOutlineController());
       // height: 24.h,
        height: Get.size.height*0.24,
       child: Obx(() {
-       if(getLanguageController.isLoading.value){
-        return Center(child: CircularProgressIndicator(),);
+       if(c.isLoading.value){
+        return Center(child: LanguageShimmer(),);
        }else{
-         return ListView(
+         return
+          ListView(
           physics: NeverScrollableScrollPhysics(),
            children: [
               SizedBox(height: 1.2.h,),

@@ -6,6 +6,9 @@ import 'package:get/get.dart';
 
 import 'package:pak_programmer/constant/constant_button.dart';
 import 'package:pak_programmer/module/coures_outline/controller/controler.dart';
+import 'package:pak_programmer/module/coures_outline/view/component/why_chooseUs/controller/why_chooseUsController.dart';
+import 'package:pak_programmer/module/coures_outline/view/component/why_chooseUs/view/why_choose_us.dart';
+import 'package:pak_programmer/module/coures_outline/view/component/whychoose_us_Tab.dart';
 // / import 'package:pak_programmer/module/coures_outline/controller/courses_controller.dart';
 // import 'package:pak_programmer/module/fyp/controller/controller.dart';
 // import 'package:pak_programmer/module/fyp/model/model.dart';
@@ -25,7 +28,7 @@ class CourseOutline extends StatefulWidget {
 }
 
 class _CourseOutlineState extends State<CourseOutline> {
-  final courseController = Get.put(CourseOutlineController());
+  final courseController = Get.put(WhyChooseUsController());
   // TabController _tabController = TabController(length: 3, vsync: this);
 
   
@@ -74,80 +77,7 @@ class _CourseOutlineState extends State<CourseOutline> {
             SingleChildScrollView(
             child: Column(
               children: [
-            Container(
-                height: Get.size.height - 33.h,
-                child: Obx(
-                  () {
-                    if(courseController.isLoading.value){
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }else{
-                      return ListView.builder(
-                    itemCount: 2,
-                    itemBuilder: (context, index) {
-                      return ExpansionTile(
-                          // textColor: Colors.black,
-                          collapsedIconColor: Color(0xff67C8F4),
-                          iconColor: Color(0xff67C8F4),
-                          collapsedTextColor: Colors.black,
-                          textColor: Colors.black,
-                          title: Text(
-                            courseController.productlist[index].name,
-                            style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color: Colors.black,
-                              fontSize: 11.sp,
-                            ),
-                          ),
-                          children: [
-                            Container(
-                             
-                              height: Get.size.height-57.h,
-                              child: Obx(() => ListView.builder(
-                                    physics: NeverScrollableScrollPhysics(),
-                                    itemCount: courseController.productlist.length,
-                                    itemBuilder: (context, pos) {
-                                      return Padding(
-                                        padding: EdgeInsets.only(left: 3.w),
-                                        child: Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding:
-                                                      EdgeInsets.only(top: 1.h),
-                                                  child: CircleAvatar(
-                                                    backgroundColor:
-                                                        Color(0xff67C8F4),
-                                                    minRadius: 1.h,
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: 1.5.h,
-                                                  child: VerticalDivider(color:Color(0xff67C8F4),))
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              width: 2.w,
-                                            ),
-                                            Text(courseController
-                                                .productlist[index].productColors[pos].colourName),
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  )),
-                            ),
-                          ]);
-                
-                    },
-                  );
-                 
-                    }
-                     },
-                ),
-              ),
+            WhyChooseUsTab(courseController: courseController),
                
                    SizedBox(height: 7.6.h,),
              ConstantButton(name: "Enroll Now", onpress: (){

@@ -33,30 +33,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Get.back();
             },
             icon: Icon(Icons.arrow_back_ios)),
-        backgroundColor: PColor.secondryColor,
+        backgroundColor: PColor.appColor,
         title: commonText(
           title: "SignUp",
           color: PColor.color_white,
           textSize: 14.sp,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Form(
-          key: signUpController.formKey,
-          child: SingleChildScrollView(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              SizedBox(
+      body: Form(
+        key: signUpController.formKey,
+        child: SingleChildScrollView(
+          child:
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            SizedBox(
                 height: 2.h,
-              ),
-              Image.asset(
+            ),
+            Image.asset(
                 PImages.logo,
                 height: 15.h,
                 width: 25.w,
-              ),
-              // SizedBox(height: Get.size.height * 0.02),
-              Row(
+            ),
+            // SizedBox(height: Get.size.height * 0.02),
+            Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -78,12 +78,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         fontSize: 15.sp),
                   )
                 ],
-              ),
+            ),
 
-              SizedBox(
+            SizedBox(
                 height: 4.h,
-              ),
-              Padding(
+            ),
+            Padding(
                 padding: EdgeInsets.only(left: 3.w),
                 child: Row(
                   children: [
@@ -93,11 +93,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         fontWeight: FontWeight.w800),
                   ],
                 ),
-              ),
-              SizedBox(
+            ),
+            SizedBox(
                 height: 2.h,
-              ),
-              Row(
+            ),
+            Row(
                 children: [
                   Icon(
                     Icons.person,
@@ -118,9 +118,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ],
-              ),
-              SizedBox(height: 4.h),
-              Row(
+            ),
+            SizedBox(height: 4.h),
+            Row(
                 children: [
                   Icon(
                     Icons.alternate_email_outlined,
@@ -141,11 +141,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   )
                 ],
-              ),
-              // ReusableTextFiled(
-              //     controller: null, validate: null, hintText: 'Email'),
-              SizedBox(height: 4.h),
-              Row(
+            ),
+            // ReusableTextFiled(
+            //     controller: null, validate: null, hintText: 'Email'),
+            SizedBox(height: 4.h),
+            Row(
                 children: [
                   Icon(
                     Icons.lock,
@@ -172,9 +172,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ],
-              ),
-              SizedBox(height: 4.h),
-              Row(
+            ),
+            SizedBox(height: 4.h),
+            Row(
                 children: [
                   Icon(
                     Icons.lock,
@@ -202,10 +202,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   )
                 ],
-              ),
+            ),
 
-              SizedBox(height: 2.h),
-              Padding(
+            SizedBox(height: 2.h),
+            Padding(
                 padding: EdgeInsets.only(right: 0.w),
                 child: Column(
                   children: [
@@ -235,56 +235,55 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     )
                   ],
                 ),
-              ),
-              SizedBox(height: 3.h),
-              Column(
-                children: [
-                  Column(
-                    children: [
-                      MaterialButton(
-                        minWidth: Get.size.width - 20.w,
-                        height: 6.h,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16)),
-                        child: Text(
-                          'Signup',
-                          style:
-                              TextStyle(color: Colors.white, fontSize: 14.sp),
-                        ),
-                        onPressed: () {
-                          // Get.to(PakProgrammerBottomNav());
-                          // signUpController.FormValidation();
-                          if (signUpController.formKey.currentState!
-                              .validate()) {
-                          } else {
-                            return null;
-                          }
-                          // controllerforallsignup.FormValidation();
+            ),
+            SizedBox(height: 3.h),
+            Column(
+              children: [
+                 MaterialButton(
+                      minWidth: Get.size.width - 20.w,
+                      height: 6.h,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16)),
+                      child: Text(
+                        'Signup',
+                        style: TextStyle(
+                            color: Colors.white, fontSize: 14.sp),
+                      ),
+                      onPressed: () {
+                        // Get.to(PakProgrammerBottomNav());
+                        // signUpController.FormValidation();
+                        // if (signUpController.formKey.currentState!
+                        //     .validate()) {
+                        // } else {
+                        //   return null;
+                        // }
+                        signUpController.formKey.currentState!.save();
+                    signUpController.signUpNow();
+
+                        // controllerforallsignup.FormValidation();
+                      },
+                      color: PColor.appColor,
+                    ),
+                SizedBox(height: 2.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Joined us before?'),
+                    SizedBox(width: 5),
+                    InkWell(
+                        onTap: () {
+                          Get.to(LogInScreen());
                         },
-                        color: PColor.secondryColor,
-                      ),
-                      SizedBox(height: 2.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Joined us before?'),
-                          SizedBox(width: 5),
-                          InkWell(
-                              onTap: () {
-                                Get.to(LogInScreen());
-                              },
-                              child: Text('Login',
-                                  style: TextStyle(
-                                    color: PColor.appColor,
-                                  ))),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
-              )
-            ]),
-          ),
+                        child: Text('Login',
+                            style: TextStyle(
+                              color: PColor.appColor,
+                            ))),
+                  ],
+                ),
+              ],
+            )
+          ]),
+              ),
         ),
       ),
     );
