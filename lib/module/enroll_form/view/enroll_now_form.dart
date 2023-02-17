@@ -56,7 +56,7 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
               Get.back();
             },
             icon: Icon(Icons.arrow_back_ios)),
-        backgroundColor: PColor.secondryColor,
+        backgroundColor: PColor.appColor,
         title: Text(
           'Enroll Now',
           style: TextStyle(color: Colors.white, fontSize: 13.sp),
@@ -232,7 +232,7 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
                           Container(
                             width: Get.size.width - 20.w,
                             child: ReusableTextFiled(
-                              enableBordercolor: PColor.secondryColor,
+                              enableBordercolor: PColor.appColor,
                               autovalidate: AutovalidateMode.onUserInteraction,
                               hintText: 'City',
                               controller: enrollController.cityNameController,
@@ -266,7 +266,7 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
                           Container(
                             width: Get.size.width - 20.w,
                             child: ReusableTextFiled(
-                              enableBordercolor: PColor.secondryColor,
+                              enableBordercolor: PColor.appColor,
                               autovalidate: AutovalidateMode.onUserInteraction,
                               hintText: 'Matric, Inter, Graduation',
                               controller:
@@ -334,8 +334,8 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
                             hint: Text('hooseNumber'),
                             items: categoryItemlist.map((item) {
                               return DropdownMenuItem(
-                                value: item['course_title'].toString(),
-                                child: Text(item['course_title'].toString()),
+                                value: item['Fpy_Heading'].toString(),
+                                child: Text(item['Fpy_Heading'].toString()),
                               );
                             }).toList(),
                             onChanged: (newVal) {
@@ -394,7 +394,7 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
                       style: TextStyle(color: Colors.white),
                     ),
                     minWidth: Get.size.width - 20.w,
-                    color: PColor.secondryColor,
+                    color: PColor.appColor,
                     height: 6.h,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15)),

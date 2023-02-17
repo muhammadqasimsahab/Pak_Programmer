@@ -6,16 +6,16 @@ import 'package:get/get.dart';
 
 import 'package:pak_programmer/constant/constant_button.dart';
 import 'package:pak_programmer/module/coures_outline/controller/controler.dart';
-import 'package:pak_programmer/module/coures_outline/view/component/why_chooseUs/controller/why_chooseUsController.dart';
-import 'package:pak_programmer/module/coures_outline/view/component/why_chooseUs/view/why_choose_us.dart';
-import 'package:pak_programmer/module/coures_outline/view/component/whychoose_us_Tab.dart';
-// / import 'package:pak_programmer/module/coures_outline/controller/courses_controller.dart';
-// import 'package:pak_programmer/module/fyp/controller/controller.dart';
-// import 'package:pak_programmer/module/fyp/model/model.dart';
+import 'package:pak_programmer/module/coures_outline/view/component/dart_flutter_tab/controller/dart_flutterTab_Controller.dart';
+import 'package:pak_programmer/module/coures_outline/view/component/why_chooseUs_tab/controller/why_chooseUsController.dart';
+import 'package:pak_programmer/module/coures_outline/view/component/why_chooseUs_tab/view/why_choose_us.dart';
+
 import 'package:pak_programmer/module/enroll_form/view/enroll_now_form.dart';
 import 'package:pak_programmer/constant/tabbar_dot_indicator.dart';
 import 'package:pak_programmer/util/color.dart';
 import 'package:sizer/sizer.dart';
+
+import 'component/dart_flutter_tab/view/dart_flutterTab_view.dart';
 
 class CourseOutline extends StatefulWidget {
   String name;
@@ -29,6 +29,7 @@ class CourseOutline extends StatefulWidget {
 
 class _CourseOutlineState extends State<CourseOutline> {
   final courseController = Get.put(WhyChooseUsController());
+  final getCourseController=Get.put(DartAndFlutterTabController());
   // TabController _tabController = TabController(length: 3, vsync: this);
 
   
@@ -44,7 +45,7 @@ class _CourseOutlineState extends State<CourseOutline> {
             elevation: 0.2,
             automaticallyImplyLeading: false,
             leading: IconButton(onPressed: (){Get.back();}, icon: Icon(Icons.arrow_back_ios)),
-            backgroundColor:PColor.secondryColor,
+            backgroundColor:PColor.appColor,
             title: Text(
               widget.name,
               style: TextStyle(color: Colors.white, fontSize: 13.sp),
@@ -79,7 +80,7 @@ class _CourseOutlineState extends State<CourseOutline> {
               children: [
             WhyChooseUsTab(courseController: courseController),
                
-                   SizedBox(height: 7.6.h,),
+                   SizedBox(height: 2.h,),
              ConstantButton(name: "Enroll Now", onpress: (){
               // controller.fetchProduct();
               Get.to(SubscriptionForm(),transition: Transition.fadeIn);
@@ -87,7 +88,8 @@ class _CourseOutlineState extends State<CourseOutline> {
               ],
             ),
           ),
-          Text("advacne"),
+          // Text("advacne"),
+          DartAndFlutterTabView(courseController: getCourseController),
           Text("advacne"),
           Text("advacne"),
     

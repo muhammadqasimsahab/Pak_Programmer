@@ -4,11 +4,14 @@ import 'package:get/get.dart';
 import 'package:pak_programmer/module/bottom_nav_home/controller/home_getLanguage_controller.dart';
 import 'package:pak_programmer/module/bottom_nav_home/shimmer/language_shimmer.dart';
 import 'package:pak_programmer/module/coures_outline/controller/controler.dart';
+import 'package:pak_programmer/module/fyp/controller/conroller.dart';
 import 'package:pak_programmer/module/language_detailpage.dart/view/language_detail_view.dart';
 import 'package:pak_programmer/util/api.dart';
 import 'package:pak_programmer/util/color.dart';
 import 'package:pak_programmer/util/common_Text.dart';
 import 'package:sizer/sizer.dart';
+
+import '../language_detailpage.dart/controller/get_language_category.dart';
 
 class ViewAllLanguage extends StatelessWidget {
   ViewAllLanguage({
@@ -76,9 +79,10 @@ class ViewAllLanguage extends StatelessWidget {
                           return InkWell(
                             onTap: () {
                               Get.to(
-                                  LanguageDetailPage(
-                                      name: c.get_course_ProductList[index]
-                                          .languageTitle),
+                                  FypController(
+                                      // name: c.get_course_ProductList[index]
+                                          // .languageTitle),
+                                  ),
                                   transition: Transition.fadeIn);
                             },
                             child: ListView(

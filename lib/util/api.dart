@@ -9,7 +9,7 @@ class AppConstants {
   static const String tutor_profile = '?results=10';
   static const String message = '?results=10';
   static const String why_choose_us_url = 'why_choose_us';
-  static const String base_url_local_url = ' http://192.168.10.13:8000/api/';
+  static const String base_url_local_url = 'http://192.168.10.13:8000/api/';
   static const String base_url = 'https://pakprogrammers.com/pakprogrammer/api/';
   static const String signup_url = 'https://pakprogrammers.com/pakprogrammer/api/';
   // https://pakprogrammers.com/pakprogrammer/api/getDropdown
@@ -21,6 +21,7 @@ class AppConstants {
   static const String get_language = 'get_languages';
   static const String get_banner = 'get_banners';
   // static const String course_api = 'get_course_outline/1';
-  static const String course_outline = 'get_course_outline/1';
+  static const String course_outline_url = 'get_course_outline/1';
   static const String image_base_url = 'https://pakprogrammers.com/pakprogrammer/public/images/';
+  static const String image_base_fyp_url = 'http://192.168.10.13:8000/fyp_images/';
 }

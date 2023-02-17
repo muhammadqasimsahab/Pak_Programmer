@@ -7,7 +7,7 @@ import 'package:pak_programmer/util/api.dart';
 class EnrollDropdownServices{
   static var client=http.Client();
   static Future<List<ProjectListModelClass>?> getFindtutors() async{
-    var response=await client.get(Uri.parse(AppConstants.base_url+AppConstants.enroll_now_dropdown));
+    var response=await client.get(Uri.parse("http://192.168.10.13:8000/api/enroll_Dropdown"));
     print(response.body);
      var jsonString=response.body;
     if(response.statusCode==200){

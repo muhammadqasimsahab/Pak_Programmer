@@ -47,6 +47,10 @@ dependencies:
   url_launcher: ^6.1.9
   shimmer: ^2.0.0
   cached_network_image: ^3.2.3
+  another_stepper: ^1.2.0
+  # flutter_swiper:
+  flutter_swiper_view: ^1.1.8
+  visibility_detector: 
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +78,7 @@ flutter:
   assets:
      - assets/images/
      - assets/image/
+     - assets/json/language_detail_view/
      - assets/
      - assets/lottiefile/
 

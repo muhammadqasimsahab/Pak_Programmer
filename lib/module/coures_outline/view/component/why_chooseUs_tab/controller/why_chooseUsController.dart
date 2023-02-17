@@ -6,16 +6,16 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:pak_programmer/module/fyp/model/fypModeClass.dart';
-import 'package:pak_programmer/module/fyp/servies/fyp_servies.dart';
+import 'package:pak_programmer/module/coures_outline/view/component/why_chooseUs_tab/model/whychoose_us_modelClass.dart';
+import 'package:pak_programmer/module/coures_outline/view/component/why_chooseUs_tab/services/tabbar_pages.dart';
 import 'package:pak_programmer/module/project/model/find_tutorModelClass.dart';
 import 'package:pak_programmer/module/project/serviece/service.dart';
 
 
-class FypController extends GetxController{
+class WhyChooseUsController extends GetxController{
 var isLoading=true.obs;
   // var productlist=<StudentFindTutorsModelClass>[].obs;
-  var productlist=List<FypModelClass>.empty().obs;
+  var productlist=List<WhyChooseUsModelClass>.empty().obs;
   var connectionStatus=0.obs;
   // final Connectivity _connectivity=Connectivity();
  
@@ -46,16 +46,13 @@ var isLoading=true.obs;
     try {
       isLoading(true);
       // isLoading.value=true;
-      var products=await FypServiesClasss.getFindtutors();
-       print("Qaiser data api : ${products}");
+      var products=await WhyChooseUsServiesClass.getFindtutors();
       if(products!=null){
         productlist.assignAll(products);
-        print("Qaiser safa : ${productlist}");
-    
-        
       }
-    } catch(e){
-        print("Qaiser data api : ${e.toString()}");
+    }catch(e){
+
+      print("error aya he . ${e.toString()}");
     } finally {
       isLoading(false);
       

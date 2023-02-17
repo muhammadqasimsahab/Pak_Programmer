@@ -23,9 +23,11 @@ class HomeGetCoursesController extends GetxController{
    try {
       isLoading(true);
     var data= await HomeServiesClass().fetchHomeCoursesData();
+    
 
     if(data!=null){
       get_course_ProductList.assignAll(data);
+
     
 
      

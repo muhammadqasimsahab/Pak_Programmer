@@ -60,13 +60,13 @@ class _GenralTabBarMaterialWidgetsState extends State<GenralTabBarMaterialWidget
              IconButton(
                icon: Image.asset(
                  icon,
-                 color: isSelect ? PColor.secondryColor : Colors.grey,
+                 color: isSelect ? PColor.bottomNavigationr : Colors.grey,
                  width: 6.w,
                  height: 6.h,
                ),
                onPressed:null ,
              ),
-             Text(title,style: TextStyle(color: isSelect ? PColor.secondryColor :Colors.grey,fontSize: 10),)
+             Text(title,style: TextStyle(color: isSelect ? PColor.bottomNavigationr :Colors.grey,fontSize: 10),)
             ],
           ),
         ),
