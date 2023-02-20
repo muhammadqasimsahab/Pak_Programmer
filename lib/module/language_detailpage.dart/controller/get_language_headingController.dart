@@ -4,15 +4,17 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:pak_programmer/module/language_detailpage.dart/model/get_language_heading_modelClass.dart';
 import 'package:pak_programmer/module/language_detailpage.dart/model/language_detailMode.dart';
+import 'package:pak_programmer/module/language_detailpage.dart/services/get_language_heading.dart';
 import 'package:pak_programmer/module/language_detailpage.dart/services/language_detail_category_servies.dart';
 
 
 
-class GetLanugaeDetailController extends GetxController{
+class GetLanugaeHeadingController extends GetxController{
 var isLoading=true.obs;
   // var productlist=<StudentFindTutorsModelClass>[].obs;
-  var productlist=List<LanguageDetailCategoryModelClass>.empty().obs;
+  var productlist=List<GetLanguageHeadingModelClass>.empty().obs;
   var connectionStatus=0.obs;
   @override
   void onReady() {
@@ -37,7 +39,7 @@ var isLoading=true.obs;
     try {
       isLoading(true);
       // isLoading.value=true;
-      var products=await GetLanguageCategoryServices.getFindtutors();
+      var products=await GetLanguageHeadingServices.getFindtutors();
       
       if(products!=null){
         productlist.assignAll(products);

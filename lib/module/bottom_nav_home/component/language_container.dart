@@ -62,11 +62,14 @@ final c=Get.put(CourseOutlineController());
                 itemBuilder: (context, index) {
                   return InkWell(
                       onTap: (){
-              Get.to(LanguageDetailPage(
-                
+          {
+                Get.to(LanguageDetailPage(
+                name: getLanguageController.get_course_ProductList[index].languageTitle,
+                id: getLanguageController.get_course_ProductList[index].id,
                 // name: getLanguageController.get_course_ProductList[index].languageTitle)
               )
                 ,transition: Transition.fadeIn);
+            }
               },
                     child: ListView(
                       physics: NeverScrollableScrollPhysics(),

@@ -45,7 +45,8 @@ class FypPage extends StatelessWidget {
                   // physics: NeverScrollableScrollPhysics(),
                   itemCount: fypController.productlist.length,
                   itemBuilder: (context, pos) {
-                    return Card(
+                    return
+                     Card(
                         child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -108,54 +109,25 @@ class FypPage extends StatelessWidget {
                                         )),
                                       ],
                                     ),
-                                    //  Container(
-                                    //   height: 14.h,
-                                    //   child: PageView.builder(
-                                    //     // scrollDirection: Axis.horizontal,
-                                    //     // physics: NeverScrollableScrollPhysics(),
-                                    //     itemCount: fypController
-                                    //         .productlist[index]
-                                    //         .description
-                                    //         .length,
-                                    //     onPageChanged: (index) {
-                                    //       // setState(() {
-                                    //       //   selected = index;
-                                    //       // });
-                                    //     },
-                                    //     itemBuilder: (context, index) {
-                                    //       return  fypController
-                                    //         .productlist[index]
-                                    //         .description[pos].img!
-                                    //         .length==0? Container() :Padding(
-                                    //         padding: EdgeInsets.only(left: 2.w),
-                                    //         child: Image.network( AppConstants.image_base_fyp_url+
-                                    //                         fypController
-                                    //                             .productlist[
-                                    //                                 index]
-                                    //                             .description[
-                                    //                                 pos]
-                                    //                             .img.toString())
-                                    //       );
-                                    //     },
-                                    //   ),
-                                    // ),
-                               fypController.productlist[pos].description[index].img!.length==0? Container() : Image.network( AppConstants.image_base_fyp_url+fypController.productlist[pos].description[index].img.toString(),width: 90.w,height: 22.h,)
+                                   fypController.productlist[pos].description[index].img!.length==0? Container() : Image.network( AppConstants.image_base_fyp_url+fypController.productlist[pos].description[index].img.toString(),width: 90.w,height: 22.h,)
                                     ],
                                 );
 
-                                // return Text(courseController.productlist[index].description[pos].description);
-                              },
+                                  },
                             ),
                           )
                           // Text(courseController.productlist[index].heading),
                         ],
                       ),
                     ));
+                 
                   },
+            
                 );
               }
             },
           ),
         ));
+ 
   }
 }

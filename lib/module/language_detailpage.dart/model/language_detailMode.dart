@@ -1,25 +1,25 @@
 // To parse this JSON data, do
 //
-//     final languageDetailModelClass = languageDetailModelClassFromJson(jsonString);
+//     final languageDetailCategoryModelClass = languageDetailCategoryModelClassFromJson(jsonString);
 
 import 'dart:convert';
 
-List<LanguageDetailModelClass> languageDetailModelClassFromJson(String str) => List<LanguageDetailModelClass>.from(json.decode(str).map((x) => LanguageDetailModelClass.fromJson(x)));
+List<LanguageDetailCategoryModelClass> languageDetailCategoryModelClassFromJson(String str) => List<LanguageDetailCategoryModelClass>.from(json.decode(str).map((x) => LanguageDetailCategoryModelClass.fromJson(x)));
 
-String languageDetailModelClassToJson(List<LanguageDetailModelClass> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String languageDetailCategoryModelClassToJson(List<LanguageDetailCategoryModelClass> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class LanguageDetailModelClass {
-    LanguageDetailModelClass({
-        required this.id,
-        required this.languageId,
-        required this.title,
+class LanguageDetailCategoryModelClass {
+    LanguageDetailCategoryModelClass({
+         this.id,
+         this.languageId,
+         this.title,
     });
 
-    int id;
-    int languageId;
-    String title;
+    int? id;
+    int? languageId;
+    String? title;
 
-    factory LanguageDetailModelClass.fromJson(Map<String, dynamic> json) => LanguageDetailModelClass(
+    factory LanguageDetailCategoryModelClass.fromJson(Map<String, dynamic> json) => LanguageDetailCategoryModelClass(
         id: json["id"],
         languageId: json["language_id"],
         title: json["title"],

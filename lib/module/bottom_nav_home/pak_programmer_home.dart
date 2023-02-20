@@ -19,6 +19,7 @@ import 'package:pak_programmer/util/api.dart';
 // import 'package:pak_programmer/pages/home_page/component/find_your_career.dart';
 import 'package:pak_programmer/util/color.dart';
 import 'package:pak_programmer/util/common_Text.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 class PakProgrammerHome extends StatefulWidget {
@@ -35,6 +36,16 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
 
   BannerAd? bannerAd;
   bool isLoaded = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(const Duration(milliseconds: 5000), () {
+      setState(() {
+        isLoaded = true;
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,6 +100,114 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
                 // child:BannerShimmer()),
                 child: HomeTopBanner(getbannerController: getbannerController)),
             search_box(context),
+            /*
+            Padding(
+              padding:  EdgeInsets.all(3.w),
+              child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children:[
+                        isLoaded? Container(
+                          height: 20.6.h,
+                          width: 70.w,
+                          decoration: BoxDecoration(
+                              color: PColor.color_white,
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                          child: Column(
+                            children: [
+                              Stack(
+                                  children:[
+                                    Container(
+                                      height: 10.h,
+                                      width: 70.w,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage("assets/fban.png"),
+                                              fit: BoxFit.cover
+
+                                          )
+                                      ),
+                                    ),
+                                    Positioned(
+                                      right: 0,
+                                      child: Container(
+                                          height: 3.h,
+                                          width: 20.w,
+                                          color: Colors.white,
+                                          child: Center(child: Text("Online",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12.sp,color: Colors.green)))),
+                                    ),
+                                  ]
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(4.0),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text("Course:" ,style: TextStyle(fontSize: 10.sp)),
+                                            SizedBox(width: 1.w,),
+                                            Text("Flutter" ,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10.sp)),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(Icons.access_time,size: 2.5.h),
+                                            SizedBox(width: 2.w,),
+                                            Text("3 months" ,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10.sp)),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Text("Price:",style: TextStyle(color: Colors.red,fontSize: 10.sp),),
+                                            SizedBox(width: 4.w,),
+                                            Text("20k",style: TextStyle(fontSize: 10.sp,fontWeight: FontWeight.bold),),
+                                            SizedBox(width: 4.w,),
+                                            Text("25k",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10.sp,color: Colors.red.withOpacity(0.4),decoration: TextDecoration.lineThrough),),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Image.asset(
+                                              PImages.off30,
+                                              height: 7.h,
+                                              width: 7.w,
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ) :getShimmerLoading(),
+                        SizedBox(width: 2.w,),
+                        Container(
+                          height: 20.h,
+                          width: 70.w,
+                          decoration: BoxDecoration(
+                              color: PColor.color_white,
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                        ),
+                      ]
+                  )
+              ),
+            ),
+           */
             SizedBox(
               height: 1.h,
             ),
@@ -463,5 +582,86 @@ class _PakProgrammerHomeState extends State<PakProgrammerHome> {
         request: AdRequest());
 
     bannerAd!.load();
+  }
+
+  Shimmer getShimmerLoading() {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Container(
+        height: 20.7.h,
+        width: 70.w,
+        decoration: BoxDecoration(
+          //color: PColor.color_white,
+            borderRadius: BorderRadius.circular(10)
+        ),
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 10.h,
+                  width: 70.w,
+                  decoration: BoxDecoration(
+                      color: Colors.white
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.all(4.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Container(height: 2.h,width: 15.w,color: Colors.white),
+                          SizedBox(width: 1.w,),
+                          Container(height: 2.h,width: 15.w,color: Colors.white),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Container(height: 3.h,width: 6.w,decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.white),),
+                          SizedBox(width: 2.w,),
+                          Container(height: 2.h,width: 18.w,color: Colors.white),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 0.2.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(height: 2.h,width: 14.w,color: Colors.white),
+                          SizedBox(width: 4.w,),
+                          Container(height: 2.h,width: 6.w,color: Colors.white),
+                          SizedBox(width: 4.w,),
+                          Container(height: 2.h,width: 6.w,color: Colors.white),
+                        ],
+                      ),
+                      Container(
+                        height: 5.h,
+                        width: 5.h,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+          ],
+        ),
+      ),
+    );
   }
 }

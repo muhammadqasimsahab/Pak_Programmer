@@ -8,6 +8,7 @@ class commonText extends StatelessWidget {
   double? textSize;
   String? fontFamily;
   int? maxline;
+  TextAlign? textAlign;
 
   commonText({
     Key? key,
@@ -17,6 +18,7 @@ class commonText extends StatelessWidget {
     this.textSize,
     this.fontWeight,
     this.fontFamily,
+    this.textAlign,
     this.maxline,
   }) : super(key: key);
 
@@ -26,13 +28,14 @@ class commonText extends StatelessWidget {
 
       maxLines: maxline,
       title,
-      textAlign: TextAlign.center,
+      textAlign: textAlign,
       overflow: textOverflow,
       style: Theme.of(context).textTheme.headline6?.copyWith(
           fontFamily: fontFamily,
 
           color: color,
           fontSize: textSize,
+
           fontWeight: fontWeight),
     );
   }
