@@ -101,21 +101,13 @@ final c=Get.put(CourseOutlineController());
                               placeholder: (context, url) => NoImageShowShimmer(),
                             ),
                           ),
-                            //    Image.network(
-                            //      AppConstants.image_base_url +
-                            //          getLanguageController
-                            //              .get_course_ProductList[index]
-                            //              .languageImage,
-                            // //      width: 25.w,
-                            // // height: 7.h,
-                            //    ),
+                        
                              ),
-                            // child: Text(getLanguageController.get_course_ProductList[index].languageTitle),
-                           ),
+                             ),
                          ),
                           
                               commonText(title: getLanguageController
-                              .get_course_ProductList[index].languageTitle,textSize: 9.sp,textOverflow: TextOverflow.ellipsis,)
+                              .get_course_ProductList[index].languageTitle,textSize: 9.sp,textOverflow: TextOverflow.ellipsis,textAlign: TextAlign.center)
                        ,
                      
                        ],

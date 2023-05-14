@@ -114,7 +114,7 @@ class ViewAllLanguage extends StatelessWidget {
                                   title: c.get_course_ProductList[index]
                                       .languageTitle,
                                   textSize: 9.sp,
-                                  textOverflow: TextOverflow.ellipsis,
+                                  textOverflow: TextOverflow.ellipsis,textAlign: TextAlign.center,
                                 ),
                               ],
                             ),

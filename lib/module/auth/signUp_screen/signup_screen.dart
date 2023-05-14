@@ -252,11 +252,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       onPressed: () {
                         // Get.to(PakProgrammerBottomNav());
                         // signUpController.FormValidation();
-                        // if (signUpController.formKey.currentState!
-                        //     .validate()) {
-                        // } else {
-                        //   return null;
-                        // }
+                        if (signUpController.formKey.currentState!
+                            .validate()) {
+                        } else {
+                          return null;
+                        }
                         signUpController.formKey.currentState!.save();
                     signUpController.signUpNow();
 

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pak_programmer/module/enroll_form/view/enroll_now_form.dart';
 import 'package:pak_programmer/module/fyp/view/fypPage.dart';
+import 'package:pak_programmer/module/language_detailpage.dart/view/m.dart';
 import 'package:pak_programmer/module/splash%20screen/splash_screen.dart';
 import 'package:pak_programmer/module/bottom_nav/bottom_nav.dart';
 import 'package:pak_programmer/tester/tester_page.dart';
+import 'package:pak_programmer/util/color.dart';
 import 'package:sizer/sizer.dart';
 
 import 'module/bottom_nav_home/controller/home_getLanguage_controller.dart';
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: AppPages.INITIAL,
       // getPages: AppPages.routes,
       home: const SplashScreen(),
-      // home: FypPage(),
+      // home: StepperDemo(),
       // home: SubscriptionForm(),
       // home: GenralBottomNavigationBarPage(),
 

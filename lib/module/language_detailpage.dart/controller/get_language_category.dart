@@ -14,6 +14,9 @@ var isLoading=true.obs;
   // var productlist=<StudentFindTutorsModelClass>[].obs;
   var productlist=List<LanguageDetailCategoryModelClass>.empty().obs;
   var connectionStatus=0.obs;
+
+
+
   @override
   void onReady() {
     // TODO: implement onReady

@@ -54,13 +54,16 @@ class _LanguageDetailPageState extends State<LanguageDetailPage>
 
   // var _select_lang_id = "";
   int selectedItem = 0;
+ bool apiItemSelected=true;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
    setState(() {
      selectedItem = 0;
-      home_lang_id=widget.id;
+      setState(() {
+        home_lang_id=widget.id;
+      });
    });
 
 
@@ -79,7 +82,7 @@ class _LanguageDetailPageState extends State<LanguageDetailPage>
             // lunchWhatApp("+923351956201", "hello");
             canLaunchUrl(whatapps);
           },
-          child: Icon(Icons.whatsapp),
+          child: Icon(Icons.call),
         ),
         appBar: AppBar(
           elevation: 0,
@@ -115,6 +118,9 @@ class _LanguageDetailPageState extends State<LanguageDetailPage>
                            onTap: (){
 
                              setState(() {
+                              apiItemSelected=false;
+                            selectedItem=index;
+                            
                                get_tabbar_id=languageDetailController.productlist[index].languageId.toString();
                                get_tabbar_lang_id=languageDetailController.productlist[index].id.toString();
                                  });
